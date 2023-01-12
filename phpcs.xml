@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<ruleset name="WordPress Coding Standards">
+    <description>PHP_CodeSniffer ruleset.</description>
+
+    <!-- Exclude paths -->
+    <exclude-pattern>*/node_modules/*</exclude-pattern>
+    <exclude-pattern>*/vendor/*</exclude-pattern>
+    <exclude-pattern>*/.old/*</exclude-pattern>
+
+    <!-- Configs -->
+    <config name="minimum_supported_wp_version" value="6.0" />
+    <config name="testVersion" value="6.0-" />
+
+    <!-- Ini -->
+    <ini name="error_reporting" value="E_ALL &#38; ~E_DEPRECATED" />
+
+    <!-- Rules -->
+    <rule ref="WordPress" />
+
+    <rule ref="WordPress.WP.I18n">
+        <properties>
+            <property name="text_domain" type="array" value="msutm-main-theme" />
+        </properties>
+    </rule>
+</ruleset>
