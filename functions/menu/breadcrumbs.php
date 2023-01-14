@@ -35,7 +35,7 @@ function esc_breadcrumb_current( $text, $class = '' ) {
 	if ( isset( $class ) && ( ! empty( $class ) ) ) {
 		$class = ' ' . $class;
 	}
-	echo '<li class="breadcrumb-item active' . esc_attr( $class ) . '">' . esc_html( $text ) . '</li>';
+	echo '<li class="breadcrumb-item active text-light' . esc_attr( $class ) . '">' . esc_html( $text ) . '</li>';
 }
 
 /**

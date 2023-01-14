@@ -28,12 +28,16 @@
 	<!-- Preloader: begin -->
 	<div class="se-pre-con"></div>
 	<!-- Preloader: end -->
-	<!-- Navigation: begin -->
-	<?php get_template_part( 'template-parts/header/main-navbar' ); ?>
-	<?php get_template_part( 'template-parts/header/breadcrumbs' ); ?>
-	<!-- Navigation: end -->
-	<div class="wrapper"> 
-		<div id="content" class="site-content mb70">
-		<?php if ( ! is_front_page() ) {
-			echo '<div class="container">';
-		} ?>
+	<!-- Wrapper: begin -->
+	<div class="wrapper">
+		<!-- Header: begin -->
+		<header id="header">
+			<!-- Navigation: begin -->
+			<?php get_template_part( 'template-parts/header/main-navbar' ); ?>
+			<?php get_template_part( 'template-parts/header/breadcrumbs' ); ?>
+			<!-- Navigation: end -->
+		</header>
+		<!-- Header: end -->
+		<!-- Content: begin -->
+		<?php $container_class = is_front_page() ? 'container-fluid' : 'container'; ?>
+		<div id="content" class="<?php echo esc_attr( $container_class ); ?>">

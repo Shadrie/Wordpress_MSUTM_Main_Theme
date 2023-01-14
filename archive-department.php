@@ -19,7 +19,7 @@ echo '<div class="accordion">';
 <?php
 if ( have_posts() ) {
 	$args = array(
-		'post_type' => 'staff_unit',
+		'post_type' => 'department',
 		'title_li'  => '',
 		'orderby'   => 'menu_order',
 		'walker'    => new Accordion_Walker(),

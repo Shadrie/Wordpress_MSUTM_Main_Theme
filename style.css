@@ -14,6 +14,40 @@ Text Domain: msutm-main-theme
 */
 
 /* ------------------------------------------------------------------------------- */
+/*  Variables
+/* ------------------------------------------------------------------------------- */
+
+:root {
+    --dark-link-color: rgba(255,255,255,.55);
+    --dark-link-hover: rgba(255,255,255,.75);
+    --dark-btn-border: rgba(0,0,0,.15);
+}
+
+/* ------------------------------------------------------------------------------- */
+/*  Layout
+/* ------------------------------------------------------------------------------- */
+
+html, body {
+    height: 100%;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    overflow-x: hidden;
+    overflow-y: visible;
+}
+
+.wrapper #content {
+    flex: 1 0 auto;
+}
+
+.wrapper #footer {
+    flex: 0 0 auto;
+}
+
+/* ------------------------------------------------------------------------------- */
 /*  Preloader
 /* ------------------------------------------------------------------------------- */
 
@@ -49,12 +83,13 @@ Text Domain: msutm-main-theme
 }
 
 .navbar-dark .nav-item {
-    color: rgba(255,255,255,.55);
+    color: var(--dark-link-color);
 }
 
 @media (min-width: 992px) {
+
     .nav-item.dropdown:hover .nav-link {
-        color: rgba(255,255,255,.75);
+        color: var(--dark-link-hover);
     }
 
     .nav-item.dropdown:hover .dropdown-menu {
@@ -65,10 +100,12 @@ Text Domain: msutm-main-theme
         margin-top: 0;
     }
 }
+
 @media (max-width: 991px) {
+    
     .nav-link.dropdown-toggle {
-        border: 1px solid rgba(0,0,0,.15);
-        background-color: #343a40;
+        border: 1px solid var(--dark-btn-border);
+        background-color: var(--bs-gray-dark);
         border-radius: .25rem;
         padding: .25rem .5rem;
     }
@@ -78,4 +115,75 @@ Text Domain: msutm-main-theme
         border: 0;
         content: '\0046';
     }
+}
+
+/* ------------------------------------------------------------------------------- */
+/*  Site Map
+/* ------------------------------------------------------------------------------- */
+
+.sitemap {
+    -moz-column-count: 3;
+    -webkit-column-count: 3;
+    column-count: 3;
+}
+
+.sitemap li {
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+.sitemap li a {
+    font-size: 1.25rem;
+    color: var(--bs-light);
+    text-decoration: none;
+}
+
+.sitemap li a:hover {
+    color: var(--bs-white);
+}
+
+.sitemap .children {
+    padding-left: 0;
+    list-style-type: none;
+}
+
+.sitemap .children li a {
+    font-size: 1rem;
+    color: var(--dark-link-color);
+    text-decoration: none;
+}
+
+.sitemap .children li a:hover {
+    color: var(--dark-link-hover);
+}
+
+/* ------------------------------------------------------------------------------- */
+/*  Breadcrumbs
+/* ------------------------------------------------------------------------------- */
+
+.breadcrumb-item a {
+    color: var(--dark-link-color);
+    text-decoration: none;
+}
+
+.breadcrumb-item a:hover {
+    color: var(--dark-link-hover);
+}
+
+/* ------------------------------------------------------------------------------- */
+/*  Footer
+/* ------------------------------------------------------------------------------- */
+
+#footer a {
+    color: var(--dark-link-color);
+    text-decoration: none;
+}
+#footer a:hover {
+    color: var(--dark-link-hover);
+}
+
+.social-links img {
+    height: 2rem;
+    width: auto;
 }

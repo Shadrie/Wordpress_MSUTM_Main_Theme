@@ -12,11 +12,13 @@
  */
 
 if ( ! is_front_page() && ! is_404() ) { ?>
-<nav aria-label="breadcrumb">
-	<div class="container-fluid bg-dark border-top border-secondary">
-		<ol class="breadcrumb pt-1 pb-2 mb-0">
-			<?php msutm_breadcrumbs(); ?>
-		</ol>
-	</div>
-</nav>
+	<!-- Breadcrumbs: begin -->
+	<nav aria-label="breadcrumb">
+		<div class="container-fluid bg-dark border-top border-secondary">
+			<ol class="breadcrumb pt-1 pb-2 mb-0">
+				<?php msutm_breadcrumbs(); ?>
+			</ol>
+		</div>
+	</nav>
+	<!-- Breadcrumbs: end -->
 <?php } ?>

@@ -18,7 +18,7 @@ Container::make( 'post_meta', __( 'Department info', 'msutm-main-theme' ) )
 ->where( 'post_type', '=', 'department' )
 ->add_fields(
 	array(
-		Field::make( 'complex', 'crb_employee_list', __( 'Employee_list', 'msutm-main-theme' ) )
+		Field::make( 'complex', 'crb_employee_list', __( 'Employee list', 'msutm-main-theme' ) )
 			->set_help_text( __( 'First set employee will be used as department head', 'msutm-main-theme' ) )
 			->set_layout( 'tabbed-horizontal' )
 			->add_fields(
