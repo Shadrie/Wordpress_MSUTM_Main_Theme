@@ -25,43 +25,15 @@
 </head>
 
 <body <?php body_class(); ?>>
+	<!-- Preloader: begin -->
 	<div class="se-pre-con"></div>
-	<div class="wrapper">
-		<header id="header">
-			<?php get_template_part( 'template-parts/header/sliding-menu' ); ?>
-			<?php get_template_part( 'template-parts/header/main-contacts' ); ?>
-			<div class="container">
-				<?php get_template_part( 'template-parts/header/site-branding' ); ?>
-				<?php get_template_part( 'template-parts/header/additional-navbar' ); ?>
-			</div>		
-			<?php get_template_part( 'template-parts/header/main-navbar' ); ?>
-		</header>    
-		<div id="content" class="site-content mb70">          
-		<?php
-		if ( ! is_front_page() && ! is_404() ) {
-			echo '<section class="static-promo a-static-promo mb30';
-			if ( is_page() ) {
-				$promo_thumbnail = get_the_post_thumbnail_url( get_the_ID(), 'full' ) ? get_the_post_thumbnail_url( get_the_ID(), 'full' ) : get_template_directory_uri() . '/images/bg-abiturient.jpg';
-				echo ' static-page text-white" style="background-image: url(' . esc_url( $promo_thumbnail ) . ');">';
-				?>
-				<div class="container promo-title-container">
-					<?php the_title( '<h1 class="promo-title">', '</h1>' ); ?>
-				</div>
-				<div class="static-promo-shadow"></div>
-				<?php
-			} else {
-				echo ' no-bg">';
-			}
-			?>
-				<div class="promo-breadcrumb">
-					<div class="container">
-						<ul class="breadcrumb">
-							<?php msutm_breadcrumbs(); ?>
-						</ul>
-					</div>
-				</div>    
-			</section>
-		<?php } ?>
+	<!-- Preloader: end -->
+	<!-- Navigation: begin -->
+	<?php get_template_part( 'template-parts/header/main-navbar' ); ?>
+	<?php get_template_part( 'template-parts/header/breadcrumbs' ); ?>
+	<!-- Navigation: end -->
+	<div class="wrapper"> 
+		<div id="content" class="site-content mb70">
 		<?php if ( ! is_front_page() ) {
 			echo '<div class="container">';
 		} ?>

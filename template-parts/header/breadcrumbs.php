@@ -1,6 +1,6 @@
 <?php
 /**
- * Site branding template
+ * Breadcrumbs template
  * PHP version 8.1
  *
  * @category  Wordpress_Theme
@@ -11,6 +11,12 @@
  * @link      https://github.com/Shadrie/Wordpress_MSUTM_Main_Theme
  */
 
-if ( has_custom_logo() ) {
-	the_custom_logo();
-}
+if ( ! is_front_page() && ! is_404() ) { ?>
+<nav aria-label="breadcrumb">
+	<div class="container-fluid bg-dark border-top border-secondary">
+		<ol class="breadcrumb pt-1 pb-2 mb-0">
+			<?php msutm_breadcrumbs(); ?>
+		</ol>
+	</div>
+</nav>
+<?php } ?>
