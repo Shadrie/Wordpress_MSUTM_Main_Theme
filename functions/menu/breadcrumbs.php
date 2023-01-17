@@ -48,7 +48,10 @@ function print_post_with_parents( $post ) {
 	if ( $parent_id ) {
 		$parents = get_post_ancestors( $post->ID );
 		foreach ( array_reverse( $parents ) as $parent ) {
-			esc_breadcrumb_template( get_page_link( $parent ), get_the_title( $parent ) );
+			esc_breadcrumb_template(
+				get_permalink( $parent ),
+				get_the_title( $parent )
+			);
 		}
 	}
 	esc_breadcrumb_current( get_the_title( $post->ID ) );

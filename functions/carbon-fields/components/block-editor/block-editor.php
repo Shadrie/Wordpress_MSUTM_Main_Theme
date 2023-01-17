@@ -27,7 +27,6 @@ Block::make( 'custom-block', __( 'Slider', 'msutm-main-theme' ) )
 	->set_render_callback(
 		function ( $fields ) {
 			?>
-			<div class="promo-carousel-container">
 				<div class="promo-carousel article-carousel owl-carousel owl-theme nav-none">
 				<?php
 				foreach ( $fields['crb_media_gallery'] as $img ) {
@@ -38,8 +37,7 @@ Block::make( 'custom-block', __( 'Slider', 'msutm-main-theme' ) )
 							<?php
 							if ( $fields['crb_show_content'] ) {
 								?>
-								<div class="shadow"></div>
-								<div class="promo-item-title">
+								<div class="promo-item-title text-light p-3">
 									<?php echo esc_html( get_the_title( $img ) ); ?>
 								</div>
 							<?php } ?>
@@ -49,7 +47,6 @@ Block::make( 'custom-block', __( 'Slider', 'msutm-main-theme' ) )
 				}
 				?>
 				</div>
-			</div>
 			<?php
 		}
 	);

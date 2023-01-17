@@ -12,19 +12,13 @@
  */
 
 $thumbnail = get_the_post_thumbnail_url( '', 'medium' );
-?>				  
-<div class="news-carousel-container-item">    
-	<div class="news-item">
+?>				     
+<div class="article-item">
+	<a href="<?php echo esc_url( get_the_permalink() ); ?>">
 		<?php if ( $thumbnail ) { ?>
-			<a href="<?php echo esc_url( get_the_permalink() ); ?>">
-				<div class="news-item-photo">
-					<div class="inside zooming" style="background-image: url(<?php echo esc_url( $thumbnail ); ?>);"></div>
-				</div>     
-			</a>   
+			<div class="article-photo mb-2" style="background-image: url(<?php echo esc_url( $thumbnail ); ?>);"></div>     
 		<?php } ?>       
-		<a href="<?php echo esc_url( get_the_permalink() ); ?>">
-			<div class="news-item-title"><?php the_title(); ?></div>
-		</a>         
-		<div class="news-item-date"><?php echo get_the_date( 'j F Y H:i' ); ?></div>
-	</div> 
+		<div class="article-title"><?php the_title(); ?></div>
+	</a>         
+	<div class="fw-lighter"><?php echo get_the_date( 'j F Y H:i' ); ?></div>
 </div>

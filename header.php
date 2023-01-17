@@ -39,5 +39,5 @@
 		</header>
 		<!-- Header: end -->
 		<!-- Content: begin -->
-		<?php $container_class = is_front_page() ? 'container-fluid' : 'container'; ?>
-		<div id="content" class="<?php echo esc_attr( $container_class ); ?>">
+		<?php $container_class = is_front_page() ? '' : ' class=container'; ?>
+		<div id="content"<?php echo esc_attr( $container_class ); ?>>

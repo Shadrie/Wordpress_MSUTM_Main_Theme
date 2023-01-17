@@ -27,16 +27,21 @@ if ( $term_list ) {
 	}
 }
 ?>	  
-<div class="faq-item">
-	<div class="faq-item-num">
-		<?php echo esc_html( $cur_post_type ) . '<br>' . esc_html( $term_string ); ?>
+<div class="my-2">
+	<div class="fw-lighter">
 	</div>
-	<div class="faq-item-title">
+	<div class="fs-4 fw-bolder">
 		<a href="<?php echo esc_url( get_the_permalink() ); ?>">
 			<?php echo esc_html( get_the_title( $post->ID ) ); ?>
 		</a>
 	</div>
-	<div class="faq-item-descr">
+	<div>
 		<?php echo esc_html( get_the_excerpt() ); ?>
+	</div>
+	<div class="fw-lighter">
+		<?php
+		$term_string = ( isset( $term_string ) && ( ! empty( $term_string ) ) ) ? ' | ' . $term_string : '';
+		echo esc_html( $cur_post_type ) . esc_html( $term_string ) . ' | ' . esc_html( get_the_date( 'j F Y H:i' ) );
+		?>
 	</div>
 </div>

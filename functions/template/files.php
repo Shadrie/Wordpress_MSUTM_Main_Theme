@@ -53,13 +53,15 @@ function get_filelist_data( $filelist ) {
 					$icon = 'icon-doc';
 			}
 			?>
-			<div class="file-item">
-				<div class="file-item-icon"><i class="<?php echo esc_attr( $icon ); ?>"></i></div>
-				<div class="file-item-title">
-					<a target="_blank" href="<?php echo esc_url( wp_get_attachment_url( $doc ) ); ?>"><?php the_title( $doc ); ?></a>
+			<div class="file-item d-flex align-items-center">
+				<i class="file-item-icon d-inline-block <?php echo esc_attr( $icon ); ?> me-2"></i>
+				<div>
+					<a target="_blank" href="<?php echo esc_url( wp_get_attachment_url( $doc ) ); ?>">
+						<?php echo esc_html( get_the_title( $doc ) ); ?>
+					</a> 
+					(<?php echo esc_html( size_format( filesize( get_attached_file( $doc ) ), 2 ) ); ?>)
 					<?php echo wp_kses_post( get_ecp_data( $doc ) ); ?>
-				</div> 
-				<div class="file-item-descr"><?php echo esc_html( size_format( filesize( get_attached_file( $doc ) ), 2 ) ); ?></div>
+				</div>
 			</div>
 			<?php
 		}

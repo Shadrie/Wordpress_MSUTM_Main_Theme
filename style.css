@@ -18,9 +18,14 @@ Text Domain: msutm-main-theme
 /* ------------------------------------------------------------------------------- */
 
 :root {
+    --bg-dark-opacity: rgba(33, 37, 41, .5);
+    --bg-light-darker: #d8d8d8;
     --dark-link-color: rgba(255,255,255,.55);
     --dark-link-hover: rgba(255,255,255,.75);
+    --light-link-color: rgba(0,0,0,.55);
+    --light-link-hover: rgba(0,0,0,.75);
     --dark-btn-border: rgba(0,0,0,.15);
+    --owl-item-margin: 15px;
 }
 
 /* ------------------------------------------------------------------------------- */
@@ -45,6 +50,64 @@ html, body {
 
 .wrapper #footer {
     flex: 0 0 auto;
+}
+
+/* ------------------------------------------------------------------------------- */
+/*  General settings
+/* ------------------------------------------------------------------------------- */
+
+a {
+    color: var(--light-link-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--light-link-hover);
+}
+
+.bg-dark a {
+    color: var(--dark-link-color);
+    text-decoration: none;
+}
+
+.bg-dark a:hover {
+    color: var(--dark-link-hover);
+}
+
+.bg-dark-opacity {
+    background-color: var(--bg-dark-opacity);
+}
+
+.bg-light-hover:hover,
+.bg-light.bg-light-hover:hover {
+    background-color: var(--bg-light-darker)!important;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.btn-dark.btn-outline-secondary {
+    color: var(--dark-link-color);
+}
+
+.overflow-visible {
+    overflow: visible;
+}
+
+.icon-caret.left::before {
+    transform: rotate(90deg);
+}
+
+.icon-caret.right::before {
+    transform: rotate(-90deg);
+}
+
+.bg-center {
+    background-position: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 /* ------------------------------------------------------------------------------- */
@@ -82,13 +145,9 @@ html, body {
     width: auto;
 }
 
-.navbar-dark .nav-item {
-    color: var(--dark-link-color);
-}
-
 @media (min-width: 992px) {
 
-    .nav-item.dropdown:hover .nav-link {
+    .nav-item.dropdown .nav-link.show {
         color: var(--dark-link-hover);
     }
 
@@ -114,6 +173,10 @@ html, body {
         font-family: Glyphter;
         border: 0;
         content: '\0046';
+    }
+
+    .nav-link.dropdown-toggle.show::after {
+        transform: rotate(-90deg);
     }
 }
 
@@ -150,25 +213,192 @@ html, body {
 
 .sitemap .children li a {
     font-size: 1rem;
-    color: var(--dark-link-color);
-    text-decoration: none;
-}
-
-.sitemap .children li a:hover {
-    color: var(--dark-link-hover);
 }
 
 /* ------------------------------------------------------------------------------- */
-/*  Breadcrumbs
+/*  Articles
 /* ------------------------------------------------------------------------------- */
 
-.breadcrumb-item a {
-    color: var(--dark-link-color);
-    text-decoration: none;
+.article-item .article-photo {
+    padding-bottom: 56%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50%;
 }
 
-.breadcrumb-item a:hover {
-    color: var(--dark-link-hover);
+.article-item a:hover .article-title {
+    color: var(--light-link-hover)
+}
+
+.article-item a:hover .article-photo {
+    opacity: .75;
+}
+
+.articles-link .icon-next::before {
+    font-size: .75rem;
+}
+
+.category .article-archive {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: calc(-1 * (var(--owl-item-margin)));
+}
+
+.category .article-archive .article-item {
+    width: 25%;
+    padding-right: var(--owl-item-margin);
+    padding-bottom: .5rem;
+}
+
+/* ------------------------------------------------------------------------------- */
+/*  Slider
+/* ------------------------------------------------------------------------------- */
+
+.promo-carousel {
+    margin-left: -1px;
+}
+
+.promo-carousel.owl-theme .owl-dots .owl-dot span {
+    background: var(--bg-dark-opacity);
+}
+
+.promo-carousel.owl-theme .owl-dots .owl-dot.active span {
+    background: var(--bs-gray-dark);
+}
+
+.promo-item-photo {
+    padding-bottom: 56.25%;
+    background-position: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.promo-item-title {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--bg-dark-opacity);
+}
+
+.main-slider.promo-carousel .owl-dots {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-slider.promo-carousel.owl-theme .owl-dots .owl-dot span {
+    height: 2rem;
+    width: 2rem;
+}
+
+.main-slider .promo-item-photo {
+    padding-bottom: 30%;
+}
+
+/* ------------------------------------------------------------------------------- */
+/*  Carousel in tabs
+/* ------------------------------------------------------------------------------- */
+
+.tab-content {
+    margin-top: var(--owl-item-margin);
+}
+
+.tab-content > .tab-pane {
+	display: block;
+    visibility: hidden;
+    opacity: 0;
+    height: 0px;
+}
+
+.tab-content > .tab-pane.active {
+	display: block;
+    visibility: visible;
+    opacity: 1;
+    height: auto;
+}
+
+.nav-pills .nav-link {
+    border-radius: 0;
+    color: var(--light-link-color);
+}
+
+.nav-pills .nav-link:hover {
+    background-color: var(--bg-dark-opacity);
+}
+
+.nav-pills .nav-link.active {
+    background-color: var(--bs-gray-dark);
+    color: var(--dark-link-color);
+}
+
+/* ------------------------------------------------------------------------------- */
+/*  Widgets
+/* ------------------------------------------------------------------------------- */
+
+.edu-level-carousel .owl-stage,
+.service-carousel .owl-stage {
+    display: flex;
+}
+
+.category-item-icon i::before,
+.service-item-icon i::before {
+    font-size: 3rem;
+}
+
+[class*='icon-']:before {
+    color: var(--bs-gray-dark)!important;
+}
+
+.bg-dark [class*='icon-']:before {
+    color: var(--bs-light)!important;
+}
+
+/* ------------------------------------------------------------------------------- */
+/*  Extra icons
+/* ------------------------------------------------------------------------------- */
+
+.file-item-icon {
+    width: 2rem;
+    height: 2rem;
+}
+
+.icon-xlsx, .icon-xls {
+	background: url(./images/excel.svg) 50% 50% no-repeat;
+	background-size: contain;
+}    
+
+.icon-doc, .icon-docx, .icon-txt {
+	background: url(./images/document.svg) 50% 50% no-repeat;
+	background-size: contain;
+}   
+
+.icon-ppt, .icon-pptx {
+	background: url(./images/powerpoint.svg) 50% 50% no-repeat;
+	background-size: contain;
+}
+
+/* ------------------------------------------------------------------------------- */
+/*  Pagination
+/* ------------------------------------------------------------------------------- */
+
+.pagination .btn:hover {
+    background-color: var(--bs-light);
+}
+
+/* ------------------------------------------------------------------------------- */
+/*  Gallery
+/* ------------------------------------------------------------------------------- */
+
+.overflow-visible .owl-stage-outer {
+    overflow: visible;
+}
+
+.gallery-item {
+    padding: 50%;
+    background-size: cover;
+    background-position: 50%;
 }
 
 /* ------------------------------------------------------------------------------- */

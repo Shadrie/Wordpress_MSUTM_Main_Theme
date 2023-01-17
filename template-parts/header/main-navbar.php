@@ -66,7 +66,7 @@
 			<div class="modal-body">
 				<form class="d-flex flex-column" role="search" method="get" id="searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>">
 					<input type="text" placeholder="<?php esc_html_e( 'Search', 'msutm-main-theme' ); ?>" title="<?php esc_html_e( 'Search', 'msutm-main-theme' ); ?>" name="s" id="s" class="form-control search-input" />
-					<button class="btn btn-primary mt-3" data-bs-dismiss="modal" type="submit" id="searchsubmit">
+					<button class="btn btn-dark btn-outline-secondary mt-3" data-bs-dismiss="modal" type="submit" id="searchsubmit">
 						<?php esc_html_e( 'Search', 'msutm-main-theme' ); ?>
 					</button>
 				</form>

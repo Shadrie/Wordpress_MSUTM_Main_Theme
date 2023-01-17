@@ -20,34 +20,26 @@ $q_args = array(
 if ( isset( $args['cat_id'] ) ) {
 	$q_args['cat'] = $args['cat_id'];
 }
+if ( isset( $args['post__in'] ) ) {
+	$q_args['post__in'] = $args['post__in'];
+}
 $the_query = new WP_Query( $q_args );
 if ( $the_query->have_posts() ) { ?>
-
-<div class="<?php echo esc_attr( $args['div'] ); ?>">
-	<div class="news-carousel-container-item">
-		<div class="carousel-container">
-			<div class="news-carousel a-carousel-<?php echo esc_attr( $args['num'] ); ?> owl-carousel owl-theme control-in-title">
-					<?php
-					while ( $the_query->have_posts() ) {
-						$the_query->the_post();
-						get_template_part( 'template-parts/archive/single-post' );
-					}
-					?>
-			</div>
-		</div>
-		<?php if ( isset( $args['cat_id'] ) ) { ?>
-			<div>
-				<a href="<?php echo esc_url( get_category_link( $args['cat_id'] ) ); ?>" class="btn btn-mini">
-					<span class="inside">
-						<?php
-						echo esc_html__( 'All', 'msutm-main-theme' ) . ' ' . esc_html( get_cat_name( $args['cat_id'] ) );
-						?>
-						<i class="icon-next"></i>
-					</span>
-				</a>
-			</div>
-		<?php } ?>
+	<div class="a-carousel-4 owl-carousel owl-theme">
+		<?php
+		while ( $the_query->have_posts() ) {
+			$the_query->the_post();
+			get_template_part( 'template-parts/archive/single-post' );
+		}
+		?>
 	</div>
-</div>
+	<?php if ( isset( $args['cat_id'] ) ) { ?>
+		<a href="<?php echo esc_url( get_category_link( $args['cat_id'] ) ); ?>" class="articles-link">
+			<?php
+			echo esc_html( get_cat_name( $args['cat_id'] ) . ' articles' );
+			?>
+			<i class="icon-next"></i>
+		</a>
+	<?php } ?>
 <?php };
 wp_reset_postdata(); ?>

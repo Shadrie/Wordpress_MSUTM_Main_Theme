@@ -12,18 +12,15 @@
  */
 
 ?>
-<div class="no-results not-found">
-	<h1><?php esc_html_e( 'Nothing Found', 'msutm-main-theme' ); ?></h1>
-	<?php
-	if ( is_search() ) {
-		?>
-		<p><?php esc_html_e( 'Nothing found. Please, try again.', 'msutm-main-theme' ); ?></p>    
-		<?php
-	} else {
-		?>
-		<p><?php esc_html_e( 'Nothing found. Using site search form might help.', 'msutm-main-theme' ); ?></p>
-		<?php
-	}
-	get_template_part( 'template-parts/content/search-form' );
+<h1><?php esc_html_e( 'Nothing Found', 'msutm-main-theme' ); ?></h1>
+<?php
+if ( is_search() ) {
 	?>
-</div>
+	<p><?php esc_html_e( 'Please, try again.', 'msutm-main-theme' ); ?></p>    
+	<?php
+} else {
+	?>
+	<p><?php esc_html_e( 'Using site search form might help.', 'msutm-main-theme' ); ?></p>
+	<?php
+}
+get_template_part( 'template-parts/content/search-form' );

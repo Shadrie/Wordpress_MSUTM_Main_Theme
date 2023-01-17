@@ -13,15 +13,16 @@
 
 $cat_list = get_the_category();
 if ( $cat_list ) {
+	echo '<div class="lead">' . esc_html( __( 'More articles', 'msutm-main-theme' ) ) . '</div>';
 	foreach ( $cat_list as $current_cat ) {
+		echo '<div class="my-3">';
 		get_template_part(
 			'template-parts/content/carousel-container',
 			null,
 			array(
 				'cat_id' => $current_cat->term_id,
-				'num'    => '4xs1sm2',
-				'div'    => 'mb30',
 			)
 		);
+		echo '</div>';
 	}
 }
