@@ -35,14 +35,8 @@ function crb_attach_theme_options() {
 	// Front page settings.
 	include 'components/pages/main.php';
 
-	// Entrant page settings.
-	include 'components/pages/entrant.php';
-
 	// Course post type settings.
 	include 'components/posts/course.php';
-
-	// Employee post type settings.
-	include 'components/posts/employee.php';
 
 	// Department post type settings.
 	include 'components/posts/department.php';

@@ -16,17 +16,17 @@
 $socials = carbon_get_theme_option( 'crb_social' );
 if ( isset( $socials ) && ( ! empty( $socials ) ) ) {
 	?> 
-		<h5><?php esc_html_e( 'Our socials', 'msutm-main-theme' ); ?></h5>
-		<ul class="social">
-			<?php
-			foreach ( $socials as $social ) {
-				echo '<li>
-					<a href="' . esc_url( $social['crb_social_link'] ) . '">
-						<i class="icon-picture" style="background-image: url(' . esc_url( $social['crb_social_icon'] ) . ');"></i>
-					</a>
-				</li>';
-			}
-			?>
-		</ul>
+	<h5><?php esc_html_e( 'Our socials', 'msutm-main-theme' ); ?></h5>
+	<ul class="list-inline social-links">
+		<?php
+		foreach ( $socials as $social ) {
+			echo '<li class="list-inline-item">
+				<a href="' . esc_url( $social['crb_social_link'] ) . '">
+					<img src="' . esc_url( $social['crb_social_icon'] ) . '">
+				</a>
+			</li>';
+		}
+		?>
+	</ul>
 	<?php
 }

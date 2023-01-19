@@ -19,7 +19,7 @@
  */
 function esc_breadcrumb_template( $url, $text ) {
 	echo sprintf(
-		'<li><a href="%1$s">%2$s</a></li>',
+		'<li class="breadcrumb-item"><a href="%1$s">%2$s</a></li>',
 		esc_url( $url ),
 		esc_html( $text )
 	);
@@ -32,11 +32,10 @@ function esc_breadcrumb_template( $url, $text ) {
  * @param string $class Class of the current breadcrumb (optional).
  */
 function esc_breadcrumb_current( $text, $class = '' ) {
-	echo '<li';
-	if ( isset( $class ) ) {
-		echo ' class="' . esc_attr( $class ) . '"';
+	if ( isset( $class ) && ( ! empty( $class ) ) ) {
+		$class = ' ' . $class;
 	}
-	echo '>' . esc_html( $text ) . '</li>';
+	echo '<li class="breadcrumb-item active text-light' . esc_attr( $class ) . '">' . esc_html( $text ) . '</li>';
 }
 
 /**
@@ -49,7 +48,10 @@ function print_post_with_parents( $post ) {
 	if ( $parent_id ) {
 		$parents = get_post_ancestors( $post->ID );
 		foreach ( array_reverse( $parents ) as $parent ) {
-			esc_breadcrumb_template( get_page_link( $parent ), get_the_title( $parent ) );
+			esc_breadcrumb_template(
+				get_permalink( $parent ),
+				get_the_title( $parent )
+			);
 		}
 	}
 	esc_breadcrumb_current( get_the_title( $post->ID ) );

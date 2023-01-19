@@ -34,7 +34,7 @@ class Accordion_Walker extends Walker_Page {
 	 */
 	public function start_lvl( &$output, $depth = 0, $args = array() ) {
 		$page_id = $this->cur_page->ID;
-		$output .= '<div id="collapse' . $page_id . '" class="accordion-collapse collapse" aria-labelledby="data' . $page_id . '" data-bs-parent="#accord' . $page_id . '">';
+		$output .= accordion_container_output_begin( $page_id );
 	}
 
 	/**
@@ -46,7 +46,7 @@ class Accordion_Walker extends Walker_Page {
 	 * @param array  $args An array of arguments.
 	 */
 	public function end_lvl( &$output, $depth = 0, $args = array() ) {
-		$output .= '</div>';
+		$output .= accordion_container_output_end();
 	}
 
 	/**
@@ -63,24 +63,9 @@ class Accordion_Walker extends Walker_Page {
 		$this->cur_page   = $page;
 		$page->post_title = $page->post_title ? $page->post_title : $page->ID . ' (no title)';
 		if ( isset( $args['pages_with_children'][ $page->ID ] ) ) {
-			$output .= '<div class="accordion-item" id="accord' . $page->ID . '">
-				<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse' . $page->ID . '" aria-expanded="false" aria-controls="collapse' . $page->ID . '">
-					<h2 class="accordion-header" id="data' . $page->ID . '">
-						<a href="' . get_permalink( $page->ID ) . '">'
-							. $page->post_title .
-						'</a>
-					</h2>
-					<span class="caret"></span>
-				</button>';
+			$output .= accordion_with_child_output_begin( get_permalink( $page->ID ), $page->post_title, $page->ID );
 		} else {
-			$output .= '<div class="accordion-item">
-				<div class="accordion-body">
-					<h2 class="accordion-header" id="data' . $page->ID . '">
-						<a href="' . get_permalink( $page->ID ) . '">'
-							. $page->post_title .
-						'</a>
-					</h2>
-				</div>';
+			$output .= accordion_no_child_output_begin( get_permalink( $page->ID ), $page->post_title );
 		}
 	}
 
@@ -94,6 +79,6 @@ class Accordion_Walker extends Walker_Page {
 	 * @param array   $args An array of arguments.
 	 */
 	public function end_el( &$output, $data_object, $depth = 0, $args = array() ) {
-		$output .= '</div>';
+		$output .= accordion_output_end();
 	}
 }

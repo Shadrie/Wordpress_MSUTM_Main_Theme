@@ -14,37 +14,40 @@
  */
 
 ?>	
-		<?php
-		if ( ! is_front_page() ) {
-			echo '</div>';
-		}
-		?>
-		</div><!-- #content -->
-		<footer role="contentinfo" id="footer">
-			<div class="section-footer section-footer-nav">
-				<div class="container">
-					<div class="row">
-						<div class="col-sm-4"> 
-							<?php get_template_part( 'template-parts/footer/social' ); ?>
-						</div>
-						<div class="col-sm-4">  
-							<?php get_template_part( 'template-parts/footer/useful-links' ); ?>
-						</div>
-						<div class="col-sm-4">
-							<?php get_template_part( 'template-parts/footer/main-contacts' ); ?>
-						</div>
+		</div>
+		<!-- Content: end -->
+		<!-- Footer: begin -->
+		<footer id="footer" class="bg-dark py-2 text-light">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-sm-3 mb-3"> 
+						<!-- Social links: begin -->
+						<?php get_template_part( 'template-parts/footer/social' ); ?>
+						<!-- Social links: end -->
+					</div>
+					<div class="col-sm-6 mb-3">
+						<!-- Useful links: begin -->
+						<?php get_template_part( 'template-parts/footer/useful-links' ); ?>
+						<!-- Useful links: end -->
+					</div>
+					<div class="col-sm-3 mb-3">
+						<!-- Main contacts: begin -->
+						<?php get_template_part( 'template-parts/footer/main-contacts' ); ?>
+						<!-- Main contacts: end -->
 					</div>
 				</div>
-			</div> <!-- /end .section-footer -->
-			<div class="section-footer py-2">
-				<div class="container">
-					<div class="copyright">
-						&copy; <?php echo esc_html( get_bloginfo( 'name' ) ) . ', ' . esc_html( gmdate( 'Y' ) ); ?>
-					</div>
-				</div>
-			</div> <!-- /end .section-footer -->      
+			</div>
+			<!-- Copyright: begin -->
+			<div class="border-top border-secondary container-fluid">
+				<div class="pt-1">
+					&copy; <?php echo esc_html( get_bloginfo( 'name' ) ) . ', ' . esc_html( gmdate( 'Y' ) ); ?>
+				</div>  
+			</div>
+			<!-- Copyright: end -->
 			<?php wp_footer(); ?>
-		</footer> <!-- /end #footer -->
-	</div> <!-- /end .wrapper -->
+		</footer>
+		<!-- Footer: end -->
+	</div>
+	<!-- Wrapper: end -->
 </body>          
 </html>

@@ -1,6 +1,6 @@
 <?php
 /**
- * Employee post type settings
+ * Breadcrumbs template
  * PHP version 8.1
  *
  * @category  Wordpress_Theme
@@ -11,11 +11,14 @@
  * @link      https://github.com/Shadrie/Wordpress_MSUTM_Main_Theme
  */
 
-use Carbon_Fields\Container;
-use Carbon_Fields\Field;
-
-Container::make( 'post_meta', __( 'Employee stats', 'msutm-main-theme' ) )
-->where( 'post_type', '=', 'employee' )
-->add_fields(
-	array()
-);
+if ( ! is_front_page() && ! is_404() ) { ?>
+	<!-- Breadcrumbs: begin -->
+	<nav aria-label="breadcrumb">
+		<div class="container-fluid bg-dark border-top border-secondary">
+			<ol class="breadcrumb pt-1 pb-2 mb-0">
+				<?php msutm_breadcrumbs(); ?>
+			</ol>
+		</div>
+	</nav>
+	<!-- Breadcrumbs: end -->
+<?php } ?>

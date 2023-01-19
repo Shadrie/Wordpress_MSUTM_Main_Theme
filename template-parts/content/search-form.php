@@ -12,26 +12,6 @@
  */
 
 ?>
-<div class="search-form-none">
-	<div class="col-lg-7">   
-		<div class="row mt50 mb50">
-			<form class="form-search-404" role="search" method="get" id="searchform" action="<?php echo esc_url( get_site_url() ); ?>">   
-				<div class="input-with-icon-left">
-					<label>
-						<i class="icon-search input-icon"></i>
-						<input type="text" value="" class="form-control subscribe-input" placeholder="<?php esc_html_e( 'Search', 'msutm-main-theme' ); ?>" title="<?php esc_html_e( 'Search', 'msutm-main-theme' ); ?>" name="s" id="s">
-					</label>
-				</div> 
-				<button type="submit" id="searchsubmit" class="btn btn-primary"><span class="inside"><?php esc_html_e( 'Search', 'msutm-main-theme' ); ?></span></button>
-			</form>   
-		</div>
-	</div>
-	<div>
-		<a href="<?php echo esc_url( get_site_url() ); ?>" class="btn btn-mini">
-			<span class="inside">
-				<?php esc_html_e( 'Front page', 'msutm-main-theme' ); ?>	
-				<i class="icon-next"></i>
-			</span>
-		</a>
-	</div>   
-</div>
+<button class="btn btn-dark btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#modalSearch" aria-controls="modalSearch" aria-expanded="false" aria-label="<?php esc_html_e( 'Toggle search', 'msutm-main-theme' ); ?>">
+	Search
+</button>

@@ -12,25 +12,37 @@
  */
 
 get_header();
-while ( have_posts() ) {
-	the_post();
-	the_title( '<h1>', '</h1>' );
-	$employee_list = carbon_get_the_post_meta( 'crb_employee_list' );
-	$employee_arr  = array();
-	foreach ( $employee_list as $employee_post ) {
-		foreach ( $employee_post['crb_employee_relation'] as $employee ) {
-			if ( array_key_exists( $employee['id'], $employee_arr ) ) {
-				$employee_arr[ $employee['id'] ] .= ', ' . $employee_post['crb_employee_post'];
-			} else {
-				$employee_arr[ $employee['id'] ] = $employee_post['crb_employee_post'];
+?>
+<div class="row my-3">
+	<div class="col">
+	<?php
+	while ( have_posts() ) {
+		the_post();
+		the_title( '<h1>', '</h1>' );
+		$employee_list = carbon_get_the_post_meta( 'crb_employee_list' );
+		$employee_arr  = array();
+		foreach ( $employee_list as $employee_post ) {
+			foreach ( $employee_post['crb_employee_relation'] as $employee ) {
+				if ( array_key_exists( $employee['id'], $employee_arr ) ) {
+					$employee_arr[ $employee['id'] ] .= ', ' . $employee_post['crb_employee_post'];
+				} else {
+					$employee_arr[ $employee['id'] ] = $employee_post['crb_employee_post'];
+				}
 			}
 		}
+		foreach ( $employee_arr as $employee_id => $employee_posts ) {
+			employee_template( $employee_id, $employee_posts );
+		}
+		the_content();
+		$contacts = get_contacts( get_the_ID() );
+		if ( isset( $contacts ) && ( ! empty( $contacts ) ) ) {
+			echo '<h2>Contacts</h2>';
+			echo wp_kses_post( $contacts );
+		}
 	}
-	foreach ( $employee_arr as $employee_id => $employee_posts ) {
-		employee_template( $employee_id, $employee_posts );
-	}
-	the_content();
-	echo '<h2>Contacts</h2>';
-	echo wp_kses_post( get_contacts( get_the_ID() ) );
-}
+	?>
+	</div>
+	<?php get_template_part( 'template-parts/content/sidebar', 'custom' ); ?>
+</div>
+<?php
 get_footer();

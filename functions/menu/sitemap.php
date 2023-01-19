@@ -24,10 +24,8 @@ function print_sitemap() {
 		)
 	);
 	if ( $sitemap ) {
-		echo '<div>
-				<ul class="pagelist" id="accordionMenu">'
-					. wp_kses_post( $sitemap ) .
-				'</ul>
-			</div>';
+		echo '<ul class="sitemap list-unstyled">'
+			. wp_kses_post( $sitemap ) .
+		'</ul>';
 	}
 }

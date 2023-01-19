@@ -67,18 +67,18 @@ function get_full_name( $short_name ) {
  */
 function filter_checkbox( $title = '', $field, $values ) {
 	if ( isset( $title ) ) {
-		echo '<div>' . esc_html( $title ) . '</div>';
+		echo '<div class="lead">' . esc_html( $title ) . '</div>';
 	}
 	if ( isset( $field ) && isset( $values ) ) {
 		$selected = filter_input( INPUT_GET, $field );
 		foreach ( $values as $key => $value ) {
-			echo '<div class="checkbox">
+			echo '<div class="form-check ps-0">
 				<label>
 					<input type="checkbox" id="' . esc_attr( $key ) . '" name="' . esc_attr( $field ) . '" value="' . esc_attr( $key ) . '"';
 			if ( isset( $selected ) && str_contains( $selected, $key ) ) {
 				echo ' checked';
 			}
-			echo '><i></i>
+			echo '>
 					' . esc_html( $value ) . '
 				</label>
 			</div>';

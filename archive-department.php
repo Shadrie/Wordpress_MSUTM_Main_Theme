@@ -12,21 +12,32 @@
  */
 
 get_header();
-the_archive_title( '<h1 class="page-title">', '</h1>' );
-echo term_description();
-echo '<div class="accordion">';
 ?>
+<div class="row my-3">
+	<div class="col">
+	<?php
+	the_archive_title( '<h1 class="mb-4">', '</h1>' );
+	echo term_description();
+	if ( have_posts() ) {
+		?>
+		<div class="accordion">
+			<?php
+			$args = array(
+				'post_type' => 'department',
+				'title_li'  => '',
+				'orderby'   => 'menu_order',
+				'walker'    => new Accordion_Walker(),
+			);
+			wp_list_pages( $args );
+			?>
+		</div>
+		<?php
+	} else {
+		get_template_part( 'template-parts/content/content', 'none' );
+	}
+	?>
+	</div>
+	<?php get_template_part( 'template-parts/content/sidebar', 'custom' ); ?>
+</div>
 <?php
-if ( have_posts() ) {
-	$args = array(
-		'post_type' => 'staff_unit',
-		'title_li'  => '',
-		'orderby'   => 'menu_order',
-		'walker'    => new Accordion_Walker(),
-	);
-	wp_list_pages( $args );
-	echo '</div>';
-} else {
-	get_template_part( 'template-parts/content/content', 'none' );
-}
 get_footer();
