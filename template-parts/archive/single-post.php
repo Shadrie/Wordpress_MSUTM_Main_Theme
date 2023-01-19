@@ -16,7 +16,7 @@ $thumbnail = get_the_post_thumbnail_url( '', 'medium' );
 <div class="article-item">
 	<a href="<?php echo esc_url( get_the_permalink() ); ?>">
 		<?php if ( $thumbnail ) { ?>
-			<div class="article-photo mb-2" style="background-image: url(<?php echo esc_url( $thumbnail ); ?>);"></div>     
+			<div class="article-photo bg-center mb-2" style="background-image: url(<?php echo esc_url( $thumbnail ); ?>);"></div>     
 		<?php } ?>       
 		<div class="article-title"><?php the_title(); ?></div>
 	</a>         

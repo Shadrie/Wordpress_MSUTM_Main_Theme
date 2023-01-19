@@ -1,4 +1,11 @@
 /*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
+/*
 Theme Name: MSUTM Main Theme
 Theme URI: https://github.com/Shadrie/Wordpress_MSUTM_Main_Theme
 Author: Natalya Sosina <ragneith@gmail.com>
@@ -37,19 +44,28 @@ html, body {
 }
 
 .wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     min-height: 100%;
     overflow-x: hidden;
     overflow-y: visible;
 }
 
 .wrapper #content {
-    flex: 1 0 auto;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 auto;
+            flex: 1 0 auto;
 }
 
 .wrapper #footer {
-    flex: 0 0 auto;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
 }
 
 /* ------------------------------------------------------------------------------- */
@@ -70,7 +86,8 @@ a:hover {
     text-decoration: none;
 }
 
-.bg-dark a:hover {
+.bg-dark a:hover,
+.bg-dark a [class*='icon-']:before {
     color: var(--dark-link-hover);
 }
 
@@ -97,19 +114,23 @@ img {
 }
 
 [class*='icon-']:before {
-    color: var(--bs-gray-dark)!important;
+    color: var(--bs-gray-dark);
 }
 
 .bg-dark [class*='icon-']:before {
-    color: var(--bs-light)!important;
+    color: var(--bs-light);
 }
 
 .icon-caret.left::before {
-    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+            transform: rotate(90deg);
 }
 
 .icon-caret.right::before {
-    transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+        -ms-transform: rotate(-90deg);
+            transform: rotate(-90deg);
 }
 
 .bg-center {
@@ -138,19 +159,29 @@ img {
 
 .navbar-toggler-icon.icon-log-in,
 .navbar-toggler-icon.icon-search {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     background: none;
 }
 
 .navbar-toggler-icon:before {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     font-size: 1.5rem;
 }
 
 .navbar-brand img {
     max-height: 5rem;
     width: auto;
+}
+
+.bg-dark .nav-item {
+    color: var(--dark-link-hover);
 }
 
 @media (min-width: 992px) {
@@ -184,7 +215,9 @@ img {
     }
 
     .nav-link.dropdown-toggle.show::after {
-        transform: rotate(-90deg);
+        -webkit-transform: rotate(-90deg);
+            -ms-transform: rotate(-90deg);
+                transform: rotate(-90deg);
     }
 }
 
@@ -201,7 +234,8 @@ img {
 .sitemap li {
     -webkit-column-break-inside: avoid;
     page-break-inside: avoid;
-    break-inside: avoid;
+    -moz-column-break-inside: avoid;
+         break-inside: avoid;
 }
 
 .sitemap li a {
@@ -229,9 +263,6 @@ img {
 
 .article-item .article-photo {
     padding-bottom: 56%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: 50%;
 }
 
 .article-item a:hover .article-title {
@@ -247,8 +278,11 @@ img {
 }
 
 .category .article-archive {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
     margin-right: calc(-1 * (var(--owl-item-margin)));
 }
 
@@ -264,6 +298,11 @@ img {
 
 .promo-carousel {
     margin-left: -1px;
+    width: calc(100% + 1px);
+}
+
+.promo-carousel .owl-item .item {
+    margin-left: 1px !important;
 }
 
 .promo-carousel.owl-theme .owl-dots .owl-dot span {
@@ -276,9 +315,6 @@ img {
 
 .promo-item-photo {
     padding-bottom: 56.25%;
-    background-position: 50%;
-    background-size: cover;
-    background-repeat: no-repeat;
 }
 
 .promo-item-title {
@@ -292,8 +328,13 @@ img {
     position: absolute;
     top: 0;
     right: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
 }
 
 .main-slider.promo-carousel.owl-theme .owl-dots .owl-dot span {
@@ -347,7 +388,17 @@ img {
 
 .edu-level-carousel .owl-stage,
 .service-carousel .owl-stage {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+}
+
+@media (max-width: 991px) {
+    .edu-level-carousel.row > .col:first-child {
+        -webkit-box-flex: 1;
+            -ms-flex: 1 1 100%;
+                flex: 1 1 100%;
+    }
 }
 
 .category-item-icon i::before,
@@ -389,8 +440,6 @@ img {
 
 .gallery-item {
     padding: 50%;
-    background-size: cover;
-    background-position: 50%;
 }
 
 /* ------------------------------------------------------------------------------- */
@@ -414,11 +463,17 @@ img {
 /* ------------------------------------------------------------------------------- */
 
 .page-numbers {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     height: 2rem;
     width: 2rem;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     margin-right: .5rem;
 }
 

@@ -33,7 +33,7 @@ Block::make( 'custom-block', __( 'Slider', 'msutm-main-theme' ) )
 					?>
 					<div class="promo-item">
 						<a href="<?php echo esc_url( wp_get_attachment_image_src( $img, 'full' )[0] ); ?>" data-fancybox>
-							<div class="promo-item-photo" style="background-image: url(<?php echo esc_url( wp_get_attachment_image_src( $img, 'large' )[0] ); ?>);"></div>
+							<div class="promo-item-photo bg-center" style="background-image: url(<?php echo esc_url( wp_get_attachment_image_src( $img, 'large' )[0] ); ?>);"></div>
 							<?php
 							if ( $fields['crb_show_content'] ) {
 								?>

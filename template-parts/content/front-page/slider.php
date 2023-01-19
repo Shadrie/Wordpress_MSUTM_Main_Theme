@@ -22,7 +22,7 @@ if ( $slider ) {
 		?>
 		<div class="promo-item">
 			<div class="position-relative">
-				<div class="promo-item-photo" style="background-image: url(<?php echo esc_url( wp_get_attachment_image_url( $slide['crb_main_slider_image'], '' ) ); ?>);">
+				<div class="promo-item-photo bg-center" style="background-image: url(<?php echo esc_url( wp_get_attachment_image_url( $slide['crb_main_slider_image'], '' ) ); ?>);">
 					<?php
 					if ( $slide['crb_main_slider_text'] ) {
 						?>

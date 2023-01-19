@@ -21,7 +21,7 @@ if ( isset( $gallery ) && ( ! empty( $gallery ) ) ) {
 			<?php
 			foreach ( $gallery as $picture ) {
 				echo '<a href="' . esc_url( wp_get_attachment_image_src( $picture, 'full' )[0] ) . '" data-fancybox="gallery-student">
-					<div class="gallery-item" style="background-image: url(' . esc_url( wp_get_attachment_image_src( $picture, 'large' )[0] ) . ');"></div>
+					<div class="gallery-item bg-center" style="background-image: url(' . esc_url( wp_get_attachment_image_src( $picture, 'large' )[0] ) . ');"></div>
 				</a>';
 			}
 			?>
