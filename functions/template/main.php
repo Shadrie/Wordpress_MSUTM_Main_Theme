@@ -28,3 +28,6 @@ require 'employee.php';
 
 // Contacts list template.
 require 'contacts.php';
+
+// Accordion layout templates.
+require 'accordion.php';

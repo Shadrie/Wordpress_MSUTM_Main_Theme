@@ -1,6 +1,6 @@
 <?php
 /**
- * Employee post type settings
+ * The template for displaying contacts on single department page
  * PHP version 8.1
  *
  * @category  Wordpress_Theme
@@ -11,11 +11,9 @@
  * @link      https://github.com/Shadrie/Wordpress_MSUTM_Main_Theme
  */
 
-use Carbon_Fields\Container;
-use Carbon_Fields\Field;
-
-Container::make( 'post_meta', __( 'Employee stats', 'msutm-main-theme' ) )
-->where( 'post_type', '=', 'employee' )
-->add_fields(
-	array()
-);
+// Get contacts from meta field.
+$contacts = get_contacts( get_the_ID() );
+if ( isset( $contacts ) && ( ! empty( $contacts ) ) ) {
+	echo '<h2>' . esc_html__( 'Contacts', 'msutm-main-theme' ) . '</h2>';
+	echo wp_kses_post( $contacts );
+}

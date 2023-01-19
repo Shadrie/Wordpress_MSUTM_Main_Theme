@@ -11,6 +11,7 @@
  * @link      https://github.com/Shadrie/Wordpress_MSUTM_Main_Theme
  */
 
+// Depending on a post type, using specific template to display a content, or a default template.
 $p_type = get_post_type( get_the_ID() );
 switch ( $p_type ) {
 	case 'post':

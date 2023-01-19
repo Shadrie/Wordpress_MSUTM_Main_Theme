@@ -11,6 +11,7 @@
  * @link      https://github.com/Shadrie/Wordpress_MSUTM_Main_Theme
  */
 
+// Retrieve information about post type and taxonomy terms to display later.
 $obj           = get_post_type_object( $post->post_type );
 $cur_post_type = $obj->labels->singular_name ?? '';
 $taxes         = get_post_taxonomies( $post );
@@ -27,16 +28,25 @@ if ( $term_list ) {
 	}
 }
 ?>	  
-<div class="faq-item">
-	<div class="faq-item-num">
-		<?php echo esc_html( $cur_post_type ) . '<br>' . esc_html( $term_string ); ?>
+<div class="my-2">
+	<div class="fw-lighter">
 	</div>
-	<div class="faq-item-title">
+	<div class="fs-4 fw-bolder">
 		<a href="<?php echo esc_url( get_the_permalink() ); ?>">
-			<?php echo esc_html( get_the_title( $post->ID ) ); ?>
+			<?php echo esc_html( get_the_title( $post->ID ) ); // Post title in a link. ?>
 		</a>
 	</div>
-	<div class="faq-item-descr">
-		<?php echo esc_html( get_the_excerpt() ); ?>
+	<div>
+		<?php
+		// Post excerpt (OR trimmed content, if unset) as a preview text.
+		echo esc_html( get_the_excerpt() );
+		?>
+	</div>
+	<div class="fw-lighter">
+		<?php
+		// Display post type and taxonomy terms.
+		$term_string = ( isset( $term_string ) && ( ! empty( $term_string ) ) ) ? ' | ' . $term_string : '';
+		echo esc_html( $cur_post_type ) . esc_html( $term_string ) . ' | ' . esc_html( get_the_date( 'j F Y H:i' ) );
+		?>
 	</div>
 </div>

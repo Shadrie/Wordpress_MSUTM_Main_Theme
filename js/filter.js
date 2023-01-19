@@ -17,7 +17,7 @@ function getParamFromCheckbox(name, params) {
     return out;
 }
 
-var filterForm = document.querySelector(".sendRequest");
+var filterForm = document.querySelector("#sendRequest");
 if (filterForm) {
     filterForm.addEventListener("click", function(e) {
         e.preventDefault();

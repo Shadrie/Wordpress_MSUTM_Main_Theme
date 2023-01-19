@@ -13,34 +13,52 @@
 
 get_header();
 global $wp_query;
+// Get search string from URL parameters.
 $search_string = filter_input( INPUT_GET, 'search' );
 ?>
-<form id="filter">
-	<div class="input-group">
-		<input type="text" id="searchStr" value="<?php echo esc_html( $search_string ); ?>" class="form-control" placeholder="<?php echo esc_html_e( 'Search', 'msutm-main-theme' ); ?>" aria-label="Recipient's username" aria-describedby="<?php echo esc_html_e( 'Search', 'msutm-main-theme' ); ?>">
-		<button class="btn btn-outline-secondary sendRequest" type="submit" id="sendRequest"><?php echo esc_html_e( 'Search', 'msutm-main-theme' ); ?></button>
+<div class="row my-3">
+	<div class="col">
+		<?php the_archive_title( '<h1 class="mb-4">', '</h1>' ); ?>
+		<!-- Filter: begin -->
+		<form id="filter" class="mb-2">
+			<div class="input-group">
+				<input type="text" id="searchStr" value="<?php echo esc_html( $search_string ); ?>" class="form-control" placeholder="<?php echo esc_html_e( 'Search', 'msutm-main-theme' ); ?>" aria-describedby="<?php echo esc_html_e( 'Search', 'msutm-main-theme' ); ?>">
+				<button class="btn btn-dark btn-outline-secondary" type="submit" id="sendRequest"><?php echo esc_html_e( 'Search', 'msutm-main-theme' ); ?></button>
+			</div>
+		</form>
+		<!-- Filter: end -->
+		<div id="result" class="mb-4">
+			<div id="main">
+			<?php
+			// Modify global query args with search value.
+			$args = $wp_query->query_vars;
+			if ( isset( $search_string ) ) {
+				$args['s'] = $search_string;
+			}
+			// Begin new query.
+			$the_query = new WP_Query( $args );
+			if ( $the_query->have_posts() ) {
+				while ( $the_query->have_posts() ) {
+					$the_query->the_post();
+					$employee_id = get_the_ID();
+					// Display information about each employee with a template by their ID.
+					employee_template( $employee_id, employee_posts( $employee_id ) );
+				}
+				// Display pagination for a new query.
+				get_template_part( 'template-parts/content/pagination', null, array( 'the_query' => $the_query ) );
+			} else {
+				// Specific template if no content found.
+				get_template_part( 'template-parts/content/content', 'none' );
+			}
+			wp_reset_postdata();
+			?>
+			</div>  
+		</div>
 	</div>
-</form>  
-<div id="result">
-	<div id="main">
 	<?php
-	$args          = $wp_query->query_vars;
-	$args['paged'] = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
-	$args['page']  = 1;
-	if ( isset( $search_string ) ) {
-		$args['s'] = $search_string;
-	}
-	$the_query = new WP_Query( $args );
-	while ( $the_query->have_posts() ) {
-		$the_query->the_post();
-		the_title( '<h1 class="d-none">', '</h1>' );
-		$employee_id = get_the_ID();
-		employee_template( $employee_id, employee_posts( $employee_id ) );
-	}
-	get_template_part( 'template-parts/content/pagination', null, array( 'the_query' => $the_query ) );
-	wp_reset_postdata();
+	// Display sidebar for custom post types.
+	get_template_part( 'template-parts/content/sidebar', 'custom' );
 	?>
-	</div>  
-</div>  
+</div>
 <?php
 get_footer();

@@ -13,36 +13,38 @@
 
 get_header();
 ?>
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'my-3' ); ?>>
 	<!-- Post content: begin -->
-	<div class="row row-inline text-center mb70">
-		<div class="col-lg-8 col-md-10 col-xs-12 text-left article-content">
-		<?php
-		while ( have_posts() ) {
-			the_post();
-			the_title( '<h1>', '</h1>' );
-			the_date( 'j F Y H:i', '<div class="article-date date mb35">', '</div>' );
-			if ( has_post_thumbnail() ) {
-				?>
-				<div class="article-image">
-					<img src="<?php echo esc_url( the_post_thumbnail_url( '' ) ); ?>" alt="">
-				</div>
-				<?php
-			}
+	<?php
+	while ( have_posts() ) {
+		the_post();
+		the_title( '<h1>', '</h1>' );
+		the_date( 'j F Y H:i', '<div class="lead">', '</div>' );
+		if ( has_post_thumbnail() ) {
+			?>
+			<div class="my-3">
+				<img src="<?php echo esc_url( the_post_thumbnail_url( 'large' ) ); ?>" alt="Post thumbnail">
+			</div>
+			<?php
+		}
+		?>
+		<div class="fs-4">
+			<?php
 			if ( has_excerpt() ) {
 				?>
 					<p><?php the_excerpt(); ?></p>
 				<?php
 			}
 			the_content();
-		}
-		?>
-		</div> 
-	</div>
-	<!-- Post content: end -->
-	<!-- More of type: begin -->
-	<?php get_template_part( '/template-parts/content/more-of-type' ); ?>
-	<!-- More of type: end -->
+			?>
+		</div>
+		<?php
+	}
+	?>
 </article>
+<!-- Post content: end -->
+<!-- More of type: begin -->
+<?php get_template_part( '/template-parts/content/more-of-type' ); ?>
+<!-- More of type: end -->
 <?php
 get_footer();

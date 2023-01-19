@@ -35,7 +35,7 @@ function esc_breadcrumb_current( $text, $class = '' ) {
 	if ( isset( $class ) && ( ! empty( $class ) ) ) {
 		$class = ' ' . $class;
 	}
-	echo '<li class="breadcrumb-item active' . esc_attr( $class ) . '">' . esc_html( $text ) . '</li>';
+	echo '<li class="breadcrumb-item active text-light' . esc_attr( $class ) . '">' . esc_html( $text ) . '</li>';
 }
 
 /**
@@ -48,7 +48,10 @@ function print_post_with_parents( $post ) {
 	if ( $parent_id ) {
 		$parents = get_post_ancestors( $post->ID );
 		foreach ( array_reverse( $parents ) as $parent ) {
-			esc_breadcrumb_template( get_page_link( $parent ), get_the_title( $parent ) );
+			esc_breadcrumb_template(
+				get_permalink( $parent ),
+				get_the_title( $parent )
+			);
 		}
 	}
 	esc_breadcrumb_current( get_the_title( $post->ID ) );
@@ -80,13 +83,20 @@ function msutm_breadcrumbs() {
 	$home_url       = home_url( '/' );
 
 	if ( ! ( is_home() || is_front_page() || is_404() ) ) {
+		// No breadcrumbs for front page and 404 pages.
+		// First of all, display front page link.
 		esc_breadcrumb_template( $home_url, $text['home'] );
 		if ( is_page() ) {
+			// Page breadcrumbs.
+			// Display current page and all of its ancestors in descending order.
 			print_post_with_parents( $post );
 		} elseif ( is_single() ) {
+			// Single post of any type breadcrumbs.
+			// Display post type archive (if exists).
 			$post_type        = get_post_type();
 			$post_type_object = get_post_type_object( $post_type );
 			print_archive( $post_type_object );
+			// Display taxonomy term archives in descending order (if exists) for top level post (if current post has ancestors).
 			$top_level  = $post->post_parent ? array_reverse( get_post_ancestors( $post->ID ) )[0] : $post->ID;
 			$taxonomies = get_object_taxonomies( $post_type_object->name, 'objects' );
 			$term_met   = false;
@@ -105,15 +115,19 @@ function msutm_breadcrumbs() {
 						foreach ( $parents as $parent ) {
 							esc_breadcrumb_template( get_term_link( $parent ), get_term( $parent )->name );
 						}
+						// Display current post title and all of its ancestors in descending order.
 						print_post_with_parents( $post );
 						++$cat_index;
 					}
 				}
 			}
 			if ( ! $term_met ) {
+				// Display current post title and all of its ancestors in descending order.
 				print_post_with_parents( $post );
 			}
 		} elseif ( is_tax() || is_category() || is_tag() ) {
+			// Taxonomy archive breadcrumbs.
+			// Display current term and all of its ancestors in descending order.
 			$current_taxonomy = get_query_var( 'taxonomy' );
 			if ( $current_taxonomy ) {
 				$tax_object       = get_taxonomy( $current_taxonomy );
@@ -133,31 +147,45 @@ function msutm_breadcrumbs() {
 			if ( get_query_var( 'paged' ) ) {
 				$term_link = get_term_link( $term_id );
 				esc_breadcrumb_template( $term_link, $term_name );
+				// Display page number.
 				esc_breadcrumb_current( sprintf( $text['page'], get_query_var( 'paged' ) ), $paged_class );
 			} else {
+				// Display term name.
 				esc_breadcrumb_current( $term_name );
 			}
 		} elseif ( is_post_type_archive() ) {
+			// Post type archive breadcrumbs.
 			$post_type_object = get_post_type_object( get_post_type() );
 			if ( get_query_var( 'paged' ) ) {
+				// Display post type name and page number.
 				print_archive( $post_type_object );
 				esc_breadcrumb_current( sprintf( $text['page'], get_query_var( 'paged' ) ), $paged_class );
 			} else {
+				// Display post type name.
 				esc_breadcrumb_current( $post_type_object->label );
 			}
 		} elseif ( is_search() ) {
+			// Search page breadcrumbs.
 			if ( get_query_var( 'paged' ) ) {
+				// Display search query text and page number.
 				esc_breadcrumb_template( $home_url . '?s=' . get_search_query(), sprintf( $text['search'] ), get_search_query() );
 				esc_breadcrumb_current( sprintf( $text['page'], get_query_var( 'paged' ) ), $paged_class );
 			} else {
+				// Display search query text.
 				esc_breadcrumb_current( sprintf( $text['search'], get_search_query() ) );
 			}
 		} elseif ( is_year() ) {
+			// Year archive breadcrumbs.
+			// Display year text.
 			esc_breadcrumb_current( get_the_time( 'Y' ) );
 		} elseif ( is_month() ) {
+			// Month archive breadcrumbs.
+			// Display year and month text.
 			esc_breadcrumb_template( get_year_link( get_the_time( 'Y' ) ), get_the_time( 'Y' ) );
 			esc_breadcrumb_current( get_the_time( 'F' ) );
 		} elseif ( is_day() ) {
+			// Day archive breadcrumbs.
+			// Display year, month and day text.
 			esc_breadcrumb_template( get_year_link( get_the_time( 'Y' ) ), get_the_time( 'Y' ) );
 			esc_breadcrumb_template( get_month_link( get_the_time( 'Y' ), get_the_time( 'm' ) ), get_the_time( 'F' ) );
 			esc_breadcrumb_current( get_the_time( 'd' ) );

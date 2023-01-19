@@ -42,37 +42,40 @@ function get_nav_menu_item_children( $parent_id, $nav_menu_items, $depth = true 
  * @param int $menu_location Menu instance location.
  */
 function print_navbar( $menu_location ) {
-	$locations  = get_nav_menu_locations();
-	$menu       = get_term( $locations[ $menu_location ], 'nav_menu' );
+	$locations = get_nav_menu_locations();
+	$menu      = get_term( $locations[ $menu_location ], 'nav_menu' );
+	// All main navigation menu items.
 	$menu_items = wp_get_nav_menu_items( $menu->term_id );
-	$top_menu   = wp_get_nav_menu_items( $menu->term_id, array( 'post_parent' => 0 ) );
+	// Only top level navigation menu items.
+	$top_menu = wp_get_nav_menu_items( $menu->term_id, array( 'post_parent' => 0 ) );
 	if ( $menu_items && $top_menu ) {
 		echo wp_kses_post( '<ul class="navbar-nav flex-fill me-auto mb-2 mb-lg-0">' );
+		// Go through all top level items.
 		foreach ( $top_menu as $item ) {
 			$item_title = $item->title;
 			$item_link  = $item->url;
-			if ( ! $item->menu_item_parent ) {
-				$parent_id     = $item->ID;
-				$url           = $item_link;
-				$submenu_items = get_nav_menu_item_children( $parent_id, $menu_items, false );
-				$aria_data     = $submenu_items ? ' aria-haspopup="true" data-bs-toggle="dropdown" aria-expanded="false"' : '';
-				$icon_caret    = $submenu_items ? ' dropdown-toggle' : '';
-				echo '<li class="nav-item dropdown">
-				<a href="' . esc_url( $item_link ) . '" class="nav-link d-inline-flex">'
-				. esc_html( $item_title ) .
-				'</a>';
-				if ( $submenu_items ) {
-					echo '<a href="#" role="button" class="nav-link dropdown-toggle d-inline-flex mx-2 mx-lg-0 ps-lg-0"' . wp_kses_post( $aria_data ) . 'id="sub_' . esc_url( $url ) . '"></a>';
-					echo '<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="sub_' . esc_url( $url ) . '">';
-					foreach ( $submenu_items as $submenu_item ) {
-						$submenu_title = $submenu_item->title;
-						$submenu_url   = $submenu_item->url;
-						echo '<li><a class="dropdown-item" href="' . esc_url( $submenu_url ) . '">' . esc_html( $submenu_title ) . '</a></li>';
-					}
-					echo '</ul>';
+			$parent_id  = $item->ID;
+			$url        = $item_link;
+			// Get submenu for current top level item.
+			$submenu_items = get_nav_menu_item_children( $parent_id, $menu_items, false );
+			// Add data to current menu item tag depending if it has submenu.
+			$aria_data = $submenu_items ? ' aria-haspopup="true" data-bs-toggle="dropdown" aria-expanded="false"' : '';
+			echo '<li class="nav-item dropdown">
+			<a href="' . esc_url( $item_link ) . '" class="nav-link d-inline-flex">'
+			. esc_html( $item_title ) .
+			'</a>';
+			if ( $submenu_items ) {
+				// If item has submenu, display it in a dropdown container.
+				echo '<a href="#" role="button" class="nav-link dropdown-toggle d-inline-flex mx-2 mx-lg-0 ps-lg-0"' . wp_kses_post( $aria_data ) . 'id="sub_' . esc_url( $url ) . '"></a>';
+				echo '<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="sub_' . esc_url( $url ) . '">';
+				foreach ( $submenu_items as $submenu_item ) {
+					$submenu_title = $submenu_item->title;
+					$submenu_url   = $submenu_item->url;
+					echo '<li><a class="dropdown-item" href="' . esc_url( $submenu_url ) . '">' . esc_html( $submenu_title ) . '</a></li>';
 				}
-				echo '</li>';
+				echo '</ul>';
 			}
+			echo '</li>';
 		}
 		echo '</ul>';
 	}

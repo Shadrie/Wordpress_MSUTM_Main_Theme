@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying archive for course type post
+ * The template for displaying archive for education level taxonomy
  * PHP version 8.1
  *
  * @category  Wordpress_Theme
@@ -26,8 +26,6 @@ the_archive_title( '<h1 class="my-3">', '</h1>' );
 		<!-- Filter: begin -->
 		<form id="filter">
 			<?php
-			// Generate checkboxes from taxonomy terms.
-			filter_checkbox( 'Level', 'edu_lvl', array_column( get_terms( array( 'taxonomy' => 'edu_level' ) ), 'name', 'slug' ) );
 			// Generate checkboxes from global values.
 			filter_checkbox( 'Form', 'edu_form', $edu_form_values );
 			filter_checkbox( 'Exam', 'edu_exam', $edu_exam_values );
@@ -44,9 +42,8 @@ the_archive_title( '<h1 class="my-3">', '</h1>' );
 	<div id="result" class="col">
 		<div id="main">
 		<?php
-		// Get meta query and tax query from selected checkbox values.
+		// Get meta query from selected checkbox values.
 		$meta_query = filter_meta_query( array( 'edu_form', 'edu_exam' ) );
-		$tax_query  = filter_tax_query( array( 'edu_lvl' ) );
 		// Modify global query args with search and checkboxes values.
 		$args = $wp_query->query_vars;
 		if ( isset( $search_string ) ) {
@@ -54,9 +51,6 @@ the_archive_title( '<h1 class="my-3">', '</h1>' );
 		}
 		if ( isset( $meta_query ) ) {
 			$args['meta_query'] = $meta_query;
-		}
-		if ( isset( $tax_query ) ) {
-			$args['tax_query'] = $tax_query;
 		}
 		// Begin new query and display its results.
 		get_template_part( 'template-parts/archive/archive-course-content', null, array( 'q_args' => $args ) );

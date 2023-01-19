@@ -67,18 +67,20 @@ function get_full_name( $short_name ) {
  */
 function filter_checkbox( $title = '', $field, $values ) {
 	if ( isset( $title ) ) {
-		echo '<div>' . esc_html( $title ) . '</div>';
+		echo '<div class="lead">' . esc_html( $title ) . '</div>';
 	}
 	if ( isset( $field ) && isset( $values ) ) {
+		// Get URL parameter corresponding to $field argument.
 		$selected = filter_input( INPUT_GET, $field );
 		foreach ( $values as $key => $value ) {
-			echo '<div class="checkbox">
+			echo '<div class="form-check ps-0">
 				<label>
 					<input type="checkbox" id="' . esc_attr( $key ) . '" name="' . esc_attr( $field ) . '" value="' . esc_attr( $key ) . '"';
 			if ( isset( $selected ) && str_contains( $selected, $key ) ) {
+				// If current option matches URL parameter, set checkbox as checked.
 				echo ' checked';
 			}
-			echo '><i></i>
+			echo '>
 					' . esc_html( $value ) . '
 				</label>
 			</div>';
@@ -94,6 +96,7 @@ function filter_checkbox( $title = '', $field, $values ) {
 function filter_meta_query( $meta_fields ) {
 	$meta_array = array();
 	foreach ( $meta_fields as $meta_field ) {
+		// Searching value in URL parameters.
 		$selected = filter_input( INPUT_GET, $meta_field );
 		if ( isset( $selected ) ) {
 			$meta_array[] = array(
@@ -116,6 +119,7 @@ function filter_meta_query( $meta_fields ) {
 function filter_tax_query( $tax_fields ) {
 	$tax_array = array();
 	foreach ( $tax_fields as $tax_field ) {
+		// Searching value in URL parameters.
 		$selected = filter_input( INPUT_GET, $tax_field );
 		if ( isset( $selected ) ) {
 			$selected_array = explode( ',', $selected );

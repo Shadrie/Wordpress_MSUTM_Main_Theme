@@ -14,28 +14,29 @@
  */
 
 echo '<h5>' . esc_html__( 'Contact us', 'msutm-main-theme' ) . '</h5>';
+// Get contacts from Theme Options.
 $main_phone   = carbon_get_theme_option( 'crb_main_phone' );
 $main_email   = carbon_get_theme_option( 'crb_main_email' );
 $main_address = carbon_get_theme_option( 'crb_main_address' );
 ?>
-<div class="contact-item-with-icon">
+<div class="d-flex">
 	<?php
 	if ( isset( $main_phone ) && ( ! empty( $main_phone ) ) ) {
-		echo '<div class="contact-icon"><i class="icon-phone"></i></div>' . wp_kses_post( $main_phone );
+		echo '<div class="me-2"><i class="icon-phone"></i></div>' . wp_kses_post( $main_phone );
 	}
 	?>
 </div>
-<div class="contact-item-with-icon">
+<div class="d-flex">
 	<?php
 	if ( isset( $main_address ) && ( ! empty( $main_address ) ) ) {
-		echo '<div class="contact-icon"><i class="icon-map-point"></i></div>' . wp_kses_post( $main_address );
+		echo '<div class="me-2"><i class="icon-map-point"></i></div>' . wp_kses_post( $main_address );
 	}
 	?>
 </div>
-<div class="contact-item-with-icon">
+<div class="d-flex">
 	<?php
 	if ( isset( $main_email ) && ( ! empty( $main_email ) ) ) {
-		echo '<div class="contact-icon"><i class="icon-at"></i></div><a href="mailto:' . esc_html( $main_email ) . '">' . esc_html( $main_email ) . '</a>';
+		echo '<div class="me-2"><i class="icon-at"></i></div><a href="mailto:' . esc_html( $main_email ) . '">' . esc_html( $main_email ) . '</a>';
 	}
 	?>
 </div>

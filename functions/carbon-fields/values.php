@@ -11,12 +11,14 @@
  * @link      https://github.com/Shadrie/Wordpress_MSUTM_Main_Theme
  */
 
+// Default values for education form meta field on course pages.
 $edu_form_values = array(
 	'ft' => __( 'Full-time', 'msutm-main-theme' ),
 	'pt' => __( 'Part-time', 'msutm-main-theme' ),
 	'rm' => __( 'Remote', 'msutm-main-theme' ),
 );
 
+// Default values for exam meta field on course pages.
 $edu_exam_values = array(
 	'math' => __( 'Mathematics', 'msutm-main-theme' ),
 	'lit'  => __( 'Literature', 'msutm-main-theme' ),
@@ -26,6 +28,7 @@ $edu_exam_values = array(
 	'che'  => __( 'Chemistry', 'msutm-main-theme' ),
 );
 
+// Values for glyphter icons select fields.
 $glyphter = array(
 	'at'             => get_template_directory_uri() . '/images/sources/at.svg',
 	'bank'           => get_template_directory_uri() . '/images/sources/bank.svg',

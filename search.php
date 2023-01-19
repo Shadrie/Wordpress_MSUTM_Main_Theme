@@ -12,20 +12,26 @@
  */
 
 get_header();
+?>
+<div class="my-3">
+<?php
 if ( have_posts() ) {
 	?>
-	<h1>
-		<?php
-		echo esc_html__( 'Search results for: ', 'msutm-main-theme' ) . get_search_query();
-		?>
-	</h1>
+	<h1><?php echo esc_html__( 'Search results for: ', 'msutm-main-theme' ) . get_search_query(); ?></h1>
+	<div class="lead"><?php echo esc_html( __( 'Found posts: ', 'msutm-main-theme' ) ) . esc_html( $wp_query->found_posts ); ?></div>
 	<?php
 	while ( have_posts() ) {
 		the_post();
+		// Display all posts in a cycle using default template for each item.
 		get_template_part( 'template-parts/archive/single-default' );
 	}
+	// Display pagination.
 	get_template_part( 'template-parts/content/pagination' );
 } else {
+	// Specific template if no content found.
 	get_template_part( 'template-parts/content/content', 'none' );
 }
+?>
+</div>
+<?php
 get_footer();

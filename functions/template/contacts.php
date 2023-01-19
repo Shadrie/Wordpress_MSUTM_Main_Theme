@@ -12,7 +12,7 @@
  */
 
 /**
- * Retrieve contacts of given post.
+ * Retrieve contacts of given post from a meta field.
  *
  * @param int $post_id Employee or department post ID.
  */
@@ -20,29 +20,30 @@ function get_contacts( $post_id ) {
 	ob_start();
 	$address = carbon_get_post_meta( $post_id, 'crb_address' );
 	if ( $address ) {
-		echo '<div class="contact-item-with-icon mb0">
-			<i class="contact-icon icon-map-point"></i>'
+		echo '<div class="d-flex">
+			<i class="icon-map-point me-2"></i>'
 			. wp_kses_post( $address ) .
 		'</div>';
 	}
 	$phone = carbon_get_post_meta( $post_id, 'crb_phone' );
 	if ( $phone ) {
-		echo '<div class="contact-item-with-icon mb0">
-			<i class="contact-icon icon-phone"></i>'
+		echo '<div class="d-flex">
+			<i class="icon-phone me-2"></i>'
 			. wp_kses_post( $phone ) .
 		'</div>';
 
 	}
 	$emails = carbon_get_post_meta( $post_id, 'crb_emails' );
 	if ( $emails ) {
-		echo '<div class="contact-item-with-icon mb0">
-			<i class="contact-icon icon-at"></i>';
+		echo '<div class="d-flex">
+			<i class="icon-at me-2"></i>
+				<div>';
 		foreach ( $emails as $email ) {
 			echo '<a href="mailto:' . esc_html( $email['crb_email'] ) . '">'
 				. esc_html( $email['crb_email'] ) .
 			'</a><br>';
 		}
-		echo '</div>';
+		echo '</div></div>';
 	}
 	$out = ob_get_contents();
 	ob_end_clean();

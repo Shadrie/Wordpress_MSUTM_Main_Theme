@@ -13,15 +13,17 @@
 
 $cat_list = get_the_category();
 if ( $cat_list ) {
+	echo '<div class="lead">' . esc_html( __( 'More articles', 'msutm-main-theme' ) ) . '</div>';
+	// Display carousel with latest articles for each category, as multiple categories might be set.
 	foreach ( $cat_list as $current_cat ) {
+		echo '<div class="my-3">';
 		get_template_part(
 			'template-parts/content/carousel-container',
 			null,
 			array(
 				'cat_id' => $current_cat->term_id,
-				'num'    => '4xs1sm2',
-				'div'    => 'mb30',
 			)
 		);
+		echo '</div>';
 	}
 }

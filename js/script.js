@@ -14,14 +14,13 @@ jQuery(window).on('DOMContentLoaded', function () {
 
 	if ($('.a-carousel').length) {
 		$('.a-carousel').owlCarousel({
-			margin: 30,
+			margin: 0,
 			items: 1,
 			smartSpeed: 2500,
 			dots: true,
-			nav: true,
-			navText: ['<i class=icon-left-arrow></i>', '<i class=icon-right-arrow></i>'],
 			loop: true,
-			autoplay: true
+			autoplay: true,
+            animateOut: 'fadeOut'
 		});
 	}
 
@@ -31,38 +30,19 @@ jQuery(window).on('DOMContentLoaded', function () {
 			items: 1,
 			smartSpeed: 2500,
 			dots: true,
-			nav: true,
-			navText: ['<i class=icon-left-arrow></i>', '<i class=icon-right-arrow></i>'],
 			loop: true,
 			autoplay: false
 		});
 	}
 
-	if ($('.a-adv-carousel').length) {
-		$('.a-adv-carousel').owlCarousel({
-			margin: 30,
-			items: 1,
-			smartSpeed: 750,
-			dots: false,
-			nav: true,
-			navText: ['<i class=icon-left-arrow></i>', '<i class=icon-right-arrow></i>'],
-			loop: false,
-			autoplay: false,
-			dotData: false,
-			autoHeight: true
-		});
-	}
-
 	if ($('.a-carousel-4').length) {
 		$('.a-carousel-4').owlCarousel({
-			margin: 30,
+			margin: 15,
 			smartSpeed: 250,
-			dots: false,
-			nav: true,
-			navText: ['<i class=icon-left-arrow></i>', '<i class=icon-right-arrow></i>'],
+			dots: true,
+			nav: false,
 			responsive: {
 				0: {
-					margin: 20,
 					slideBy: 2,
 					items: 2
 				},
@@ -71,7 +51,6 @@ jQuery(window).on('DOMContentLoaded', function () {
 					items: 3
 				},
 				1000: {
-					margin: 30,
 					slideBy: 3,
 					items: 3
 				},
@@ -83,95 +62,11 @@ jQuery(window).on('DOMContentLoaded', function () {
 		});
 	}
 
-	if ($('.a-carousel-4xs1sm2').length) {
-		$('.a-carousel-4xs1sm2').owlCarousel({
-			margin: 30,
-			smartSpeed: 250,
-			dots: false,
-			nav: true,
-			navText: ['<i class=icon-left-arrow></i>', '<i class=icon-right-arrow></i>'],
-			responsive: {
-				0: {
-					margin: 20,
-					slideBy: 1,
-					items: 1
-				},
-				600: {
-					slideBy: 2,
-					items: 2
-				},
-				1000: {
-					margin: 30,
-					slideBy: 2,
-					items: 2
-				},
-				1260: {
-					slideBy: 4,
-					items: 4
-				}
-			}
-		});
-	}
 
-
-	if ($('.a-carousel-3').length) {
-		$('.a-carousel-3').owlCarousel({
-			margin: 30,
+	if ($('.a-carousel-courses').length) {
+		$('.a-carousel-courses').owlCarousel({
+			margin: 0,
 			smartSpeed: 250,
-			dots: false,
-			nav: true,
-			navText: ['<i class=icon-left-arrow></i>', '<i class=icon-right-arrow></i>'],
-			responsive: {
-				0: {
-					margin: 20,
-					slideBy: 2,
-					items: 2
-				},
-				600: {
-					nav: true,
-					slideBy: 2,
-					items: 2
-				},
-				1000: {
-					margin: 30,
-					slideBy: 3,
-					items: 3
-				},
-				1260: {
-					slideBy: 3,
-					items: 3
-				}
-			}
-		});
-	}
-
-	if ($('.a-carousel-2').length) {
-		$('.a-carousel-2').owlCarousel({
-			margin: 30,
-			smartSpeed: 250,
-			dots: false,
-			nav: true,
-			navText: ['<i class=icon-left-arrow></i>', '<i class=icon-right-arrow></i>'],
-			responsive: {
-				0: {
-					margin: 20,
-					slideBy: 1,
-					items: 1
-				},
-				600: {
-					margin: 30,
-					slideBy: 2,
-					items: 2
-				}
-			}
-		});
-	} if ($('.a-carousel-photo').length) {
-		$('.a-carousel-photo').owlCarousel({
-			margin: 20,
-			smartSpeed: 250,
-			dots: false,
-			nav: true,
-			navText: ['<i class=icon-left-arrow></i>', '<i class=icon-right-arrow></i>'],
 			responsive: {
 				0: {
 					slideBy: 2,
@@ -223,34 +118,7 @@ jQuery(window).on('DOMContentLoaded', function () {
 			}
 		});
 	}
-
-	if ($('.a-carousel-partner').length) {
-		$('.a-carousel-partner').owlCarousel({
-			margin: 20,
-			smartSpeed: 250,
-			dots: false,
-			nav: true,
-			navText: ['<i class=icon-left-arrow></i>', '<i class=icon-right-arrow></i>'],
-			responsive: {
-				0: {
-					slideBy: 2,
-					items: 2
-				},
-				600: {
-					slideBy: 3,
-					items: 3
-				},
-				1000: {
-					slideBy: 4,
-					items: 4
-				},
-				1260: {
-					slideBy: 6,
-					items: 6
-				}
-			}
-		});
-	}
+    
 	$(".se-pre-con").fadeOut("fast");
 })
 

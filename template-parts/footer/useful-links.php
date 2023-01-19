@@ -14,9 +14,11 @@
  */
 
 echo '<h5>' . esc_html__( 'Useful links', 'msutm-main-theme' ) . '</h5>';
+// Get menu items from 'Footer' menu and add css classes to customise display.
 wp_nav_menu(
 	array(
 		'theme_location' => 'footer',
-		'menu_class'     => 'footer-nav',
+		'menu_class'     => 'list-inline',
+		'item_class'     => 'list-inline-item',
 	)
 );

@@ -21,7 +21,6 @@ Container::make( 'post_meta', __( 'Front page options', 'msutm-main-theme' ) )
 	->add_tab(
 		__( 'General', 'msutm-main-theme' ),
 		array(
-			Field::make( 'text', 'crb_main_video', __( 'Video link', 'msutm-main-theme' ) ),
 			Field::make( 'complex', 'crb_uni_numbers', __( 'University in numbers', 'msutm-main-theme' ) )
 				->set_max( 4 )
 				->set_layout( 'tabbed-horizontal' )
@@ -36,6 +35,7 @@ Container::make( 'post_meta', __( 'Front page options', 'msutm-main-theme' ) )
 						<%- crb_uni_number %> <%- crb_uni_number_option %>
 					<% } %>'
 				),
+			Field::make( 'image', 'crb_uni_numbers_bg', __( 'Background for numbers block', 'msutm-main-theme' ) ),
 		)
 	)
 	->add_tab(
@@ -53,29 +53,11 @@ Container::make( 'post_meta', __( 'Front page options', 'msutm-main-theme' ) )
 		)
 	)
 	->add_tab(
-		__( 'Advantages', 'msutm-main-theme' ),
-		array(
-			Field::make( 'complex', 'crb_advantage', __( 'Advantages', 'msutm-main-theme' ) )
-				->set_max( 4 )
-				->set_layout( 'tabbed-horizontal' )
-				->add_fields(
-					array(
-						Field::make( 'radio_image', 'crb_advantage_icon', __( 'Advantage icon', 'msutm-main-theme' ) )
-							->add_options( $glyphter )
-							->set_classes( 'glyphter' ),
-						Field::make( 'color', 'crb_advantage_color', __( 'Color', 'msutm-main-theme' ) ),
-						Field::make( 'text', 'crb_advantage_text', __( 'Title', 'msutm-main-theme' ) ),
-						Field::make( 'text', 'crb_advantage_url', __( 'Link', 'msutm-main-theme' ) ),
-					)
-				),
-		)
-	)
-	->add_tab(
 		__( 'Featured', 'msutm-main-theme' ),
 		array(
 			Field::make( 'association', 'crb_featured_cat', __( 'Featured articles', 'msutm-main-theme' ) )
 				->set_help_text( __( 'Articles displayed on the right side of slider. Leave blank to use full-width slider.', 'msutm-main-theme' ) )
-				->set_max( 9 )
+				->set_max( 6 )
 				->set_types(
 					array(
 						array(
@@ -91,7 +73,6 @@ Container::make( 'post_meta', __( 'Front page options', 'msutm-main-theme' ) )
 						Field::make( 'radio_image', 'crb_main_service_icon', __( 'Service icon', 'msutm-main-theme' ) )
 							->add_options( $glyphter )
 							->set_classes( 'glyphter' ),
-						Field::make( 'color', 'crb_main_service_color', __( 'Color', 'msutm-main-theme' ) ),
 						Field::make( 'text', 'crb_main_service_text', __( 'Title', 'msutm-main-theme' ) ),
 						Field::make( 'textarea', 'crb_main_service_desc', __( 'Description', 'msutm-main-theme' ) ),
 						Field::make( 'text', 'crb_main_service_url', __( 'Link', 'msutm-main-theme' ) ),

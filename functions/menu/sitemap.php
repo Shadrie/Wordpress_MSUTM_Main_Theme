@@ -12,9 +12,10 @@
  */
 
 /**
- * Generates sitemap from pages and prints it as a formatted list
+ * Generates pseudo-sitemap from pages and prints it as a formatted list
  */
 function print_sitemap() {
+	// Only using 2 levels of navigation to prevent excessive information display (as children will we displayed on parent's pages either way).
 	$sitemap = wp_list_pages(
 		array(
 			'title_li' => '',
@@ -24,10 +25,8 @@ function print_sitemap() {
 		)
 	);
 	if ( $sitemap ) {
-		echo '<div>
-				<ul class="pagelist" id="accordionMenu">'
-					. wp_kses_post( $sitemap ) .
-				'</ul>
-			</div>';
+		echo '<ul class="sitemap list-unstyled">'
+			. wp_kses_post( $sitemap ) .
+		'</ul>';
 	}
 }

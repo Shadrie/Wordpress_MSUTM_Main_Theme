@@ -11,14 +11,16 @@
  * @link      https://github.com/Shadrie/Wordpress_MSUTM_Main_Theme
  */
 
+// Use global query args, if no query was passed.
 if ( ! isset( $args['the_query'] ) ) {
 	global $wp_query;
 	$the_query = $wp_query;
 } else {
 	$the_query = $args['the_query'];
 }
-$big = 999999999;
-echo '<div class="paginate-links mb30">';
+// Need an integer unlikely to be a page number.
+$big = PHP_INT_MAX;
+echo '<div class="pagination">';
 $page_list = paginate_links(
 	array(
 		'base'      => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
@@ -32,6 +34,7 @@ $page_list = paginate_links(
 );
 if ( is_array( $page_list ) ) {
 	foreach ( $page_list as $cur_page ) {
-		echo '<span class="btn btn-mini"><span class="inside">' . wp_kses_post( $cur_page ) . '</span></span>'; }
+		echo wp_kses_post( $cur_page );
+	}
 }
 echo '</div>';

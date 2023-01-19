@@ -12,21 +12,30 @@
  */
 
 get_header();
-the_archive_title( '<h1 class="page-title">', '</h1>' );
-echo term_description();
-if ( have_posts() ) {
-	?>
-	<div class="category-carousel"> 
-		<?php
-		while ( have_posts() ) {
-			the_post();
-			get_template_part( 'template-parts/archive/single-item' );
-		}
-		?>
-	</div> 
+?>
+<div class="my-3">
 	<?php
-	get_template_part( 'template-parts/content/pagination' );
-} else {
-	get_template_part( 'template-parts/content/content', 'none' );
-}
+	the_archive_title( '<h1>', '</h1>' );
+	echo term_description();
+	if ( have_posts() ) {
+		?>
+		<div class="article-archive"> 
+			<?php
+			// Display all posts in a cycle using template for each item.
+			while ( have_posts() ) {
+				the_post();
+				get_template_part( 'template-parts/archive/single-item' );
+			}
+			?>
+		</div> 
+		<?php
+		// Display pagination.
+		get_template_part( 'template-parts/content/pagination' );
+	} else {
+		// Specific template if no content found.
+		get_template_part( 'template-parts/content/content', 'none' );
+	}
+	?>
+</div>
+<?php
 get_footer();

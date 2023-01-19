@@ -11,6 +11,7 @@
  * @link      https://github.com/Shadrie/Wordpress_MSUTM_Main_Theme
  */
 
+// Get menu items from 'Header' menu and add css classes to customise display.
 wp_nav_menu(
 	array(
 		'theme_location' => 'menu-2',
@@ -22,6 +23,7 @@ wp_nav_menu(
 ?>
 <div class="navbar-nav me-auto mb-2 mb-lg-0">
 	<?php
+	// Get payment link from Theme Options.
 	$payment = carbon_get_theme_option( 'crb_payment' );
 	if ( isset( $payment ) && ( ! empty( $payment ) ) ) {
 		?>
@@ -33,6 +35,7 @@ wp_nav_menu(
 		</div>
 		<?php
 	}
+	// Display Sign Up and Log In links if set in Theme Options (if allowed in settings).
 	$allow_login_signup = carbon_get_theme_option( 'crb_allow_login_signup' );
 	if ( isset( $allow_login_signup ) && ( ! empty( $allow_login_signup ) ) ) {
 		?>
