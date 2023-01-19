@@ -12,7 +12,7 @@
  */
 
 ?>
-<h1><?php esc_html_e( 'Nothing Found', 'msutm-main-theme' ); ?></h1>
+<h2><?php esc_html_e( 'Nothing Found', 'msutm-main-theme' ); ?></h2>
 <?php
 if ( is_search() ) {
 	?>

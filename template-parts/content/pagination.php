@@ -32,6 +32,7 @@ $page_list = paginate_links(
 );
 if ( is_array( $page_list ) ) {
 	foreach ( $page_list as $cur_page ) {
-		echo '<span class="btn me-2">' . wp_kses_post( $cur_page ) . '</span>'; }
+		echo wp_kses_post( $cur_page );
+	}
 }
 echo '</div>';

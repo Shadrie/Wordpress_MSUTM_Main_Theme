@@ -12,12 +12,12 @@
  */
 
 get_header();
-the_archive_title( '<h1 class="page-title">', '</h1>' );
-echo term_description();
 ?>
 <div class="row my-3">
 	<div class="col">
 	<?php
+	the_archive_title( '<h1 class="mb-4">', '</h1>' );
+	echo term_description();
 	if ( have_posts() ) {
 		?>
 		<div class="accordion">

@@ -17,13 +17,14 @@ $search_string = filter_input( INPUT_GET, 'search' );
 ?>
 <div class="row my-3">
 	<div class="col">
+		<?php the_archive_title( '<h1 class="mb-4">', '</h1>' ); ?>
 		<form id="filter" class="mb-2">
 			<div class="input-group">
 				<input type="text" id="searchStr" value="<?php echo esc_html( $search_string ); ?>" class="form-control" placeholder="<?php echo esc_html_e( 'Search', 'msutm-main-theme' ); ?>" aria-label="Recipient's username" aria-describedby="<?php echo esc_html_e( 'Search', 'msutm-main-theme' ); ?>">
 				<button class="btn btn-dark btn-outline-secondary" type="submit" id="sendRequest"><?php echo esc_html_e( 'Search', 'msutm-main-theme' ); ?></button>
 			</div>
 		</form>  
-		<div id="result">
+		<div id="result" class="mb-4">
 			<div id="main">
 			<?php
 			$args          = $wp_query->query_vars;
@@ -36,7 +37,7 @@ $search_string = filter_input( INPUT_GET, 'search' );
 			if ( $the_query->have_posts() ) {
 				while ( $the_query->have_posts() ) {
 					$the_query->the_post();
-					the_title( '<h1 class="d-none">', '</h1>' );
+					the_title( '<h2 class="d-none">', '</h2>' );
 					$employee_id = get_the_ID();
 					employee_template( $employee_id, employee_posts( $employee_id ) );
 				}

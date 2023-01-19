@@ -96,6 +96,14 @@ img {
     overflow: visible;
 }
 
+[class*='icon-']:before {
+    color: var(--bs-gray-dark)!important;
+}
+
+.bg-dark [class*='icon-']:before {
+    color: var(--bs-light)!important;
+}
+
 .icon-caret.left::before {
     transform: rotate(90deg);
 }
@@ -347,14 +355,6 @@ img {
     font-size: 3rem;
 }
 
-[class*='icon-']:before {
-    color: var(--bs-gray-dark)!important;
-}
-
-.bg-dark [class*='icon-']:before {
-    color: var(--bs-light)!important;
-}
-
 /* ------------------------------------------------------------------------------- */
 /*  Extra icons
 /* ------------------------------------------------------------------------------- */
@@ -380,14 +380,6 @@ img {
 }
 
 /* ------------------------------------------------------------------------------- */
-/*  Pagination
-/* ------------------------------------------------------------------------------- */
-
-.pagination .btn:hover {
-    background-color: var(--bs-light);
-}
-
-/* ------------------------------------------------------------------------------- */
 /*  Gallery
 /* ------------------------------------------------------------------------------- */
 
@@ -399,6 +391,39 @@ img {
     padding: 50%;
     background-size: cover;
     background-position: 50%;
+}
+
+/* ------------------------------------------------------------------------------- */
+/*  Employee
+/* ------------------------------------------------------------------------------- */
+
+.employee-img {
+    padding-bottom: 120%;
+}
+
+/* ------------------------------------------------------------------------------- */
+/*  Accordion
+/* ------------------------------------------------------------------------------- */
+
+.accordion-item:first-of-type .accordion-button {
+    border-radius: calc(0.25rem - 1px);
+}
+
+/* ------------------------------------------------------------------------------- */
+/*  Pagination
+/* ------------------------------------------------------------------------------- */
+
+.page-numbers {
+    display: flex;
+    height: 2rem;
+    width: 2rem;
+    justify-content: center;
+    align-items: center;
+    margin-right: .5rem;
+}
+
+.page-numbers:not(.current):hover {
+    background-color: var(--bs-light);
 }
 
 /* ------------------------------------------------------------------------------- */

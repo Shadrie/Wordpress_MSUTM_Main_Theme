@@ -38,9 +38,6 @@ function crb_attach_theme_options() {
 	// Course post type settings.
 	include 'components/posts/course.php';
 
-	// Employee post type settings.
-	include 'components/posts/employee.php';
-
 	// Department post type settings.
 	include 'components/posts/department.php';
 
