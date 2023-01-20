@@ -427,18 +427,23 @@ img {
     height: 2rem;
 }
 
+.icon-pdf {
+	background: url(./images/sources/pdf.svg) 50% 50% no-repeat;
+	background-size: contain;
+}    
+
 .icon-xlsx, .icon-xls {
-	background: url(./images/excel.svg) 50% 50% no-repeat;
+	background: url(./images/sources/excel.svg) 50% 50% no-repeat;
 	background-size: contain;
 }    
 
 .icon-doc, .icon-docx, .icon-txt {
-	background: url(./images/document.svg) 50% 50% no-repeat;
+	background: url(./images/sources/document.svg) 50% 50% no-repeat;
 	background-size: contain;
 }   
 
 .icon-ppt, .icon-pptx {
-	background: url(./images/powerpoint.svg) 50% 50% no-repeat;
+	background: url(./images/sources/powerpoint.svg) 50% 50% no-repeat;
 	background-size: contain;
 }
 
