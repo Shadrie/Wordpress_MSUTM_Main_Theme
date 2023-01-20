@@ -25,7 +25,7 @@ function print_sitemap() {
 		)
 	);
 	if ( $sitemap ) {
-		echo '<ul class="sitemap list-unstyled">'
+		echo '<ul class="sitemap list-unstyled mb-0">'
 			. wp_kses_post( $sitemap ) .
 		'</ul>';
 	}

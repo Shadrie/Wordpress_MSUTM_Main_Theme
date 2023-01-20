@@ -22,6 +22,7 @@ get_header(); ?>
 		get_template_part( 'template-parts/content/course/edu-level' );
 		get_template_part( 'template-parts/content/course/edu-form' );
 		get_template_part( 'template-parts/content/course/edu-exam' );
+		get_template_part( 'template-parts/content/course/employee-list' );
 		the_content();
 	}
 	?>

@@ -197,9 +197,17 @@ img {
     .nav-item .dropdown-menu[data-bs-popper] {
         margin-top: 0;
     }
+
+    .nav-item.dropdown {
+        white-space: nowrap;
+    }
 }
 
 @media (max-width: 991px) {
+
+    .logo-block {
+        width: 100%;
+    }
     
     .nav-link.dropdown-toggle {
         border: 1px solid var(--dark-btn-border);
@@ -248,9 +256,13 @@ img {
     color: var(--bs-white);
 }
 
+.sitemap > li {
+    padding-bottom: 1rem;
+}
+
 .sitemap .children {
-    padding-left: 0;
     list-style-type: none;
+    padding-left: 0;
 }
 
 .sitemap .children li a {

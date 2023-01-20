@@ -21,6 +21,7 @@ while ( have_posts() ) {
 			// Display information about employee by their ID with a template.
 			$employee_id = get_the_ID();
 			employee_template( $employee_id, employee_posts( $employee_id ) );
+			echo wp_kses_post( employee_courses( $employee_id ) );
 			the_content();
 			?>
 		</div>

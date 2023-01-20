@@ -34,9 +34,10 @@ function employee_posts( $employee_id ) {
 	);
 	$the_query = new WP_Query( $args );
 	if ( $the_query->have_posts() ) {
+		echo '<div>';
+		echo '<div class="fw-bolder">' . esc_html__( 'Employee posts', 'msutm-main-theme' ) . ':</div>';
 		while ( $the_query->have_posts() ) {
 			echo '<div>';
-			echo '<div class="fw-bolder">' . esc_html__( 'Employee posts', 'msutm-main-theme' ) . ':</div>';
 			$the_query->the_post();
 			$employee_list = carbon_get_the_post_meta( 'crb_employee_list' );
 			// Traverse further into employee array to filter an inner field consisting of employee IDs.
@@ -61,6 +62,42 @@ function employee_posts( $employee_id ) {
 			}
 			echo ' - <a href="' . esc_url( get_the_permalink() ) . '">' . esc_html( get_the_title() ) . '</a>';
 			echo '</div>';
+		}
+		echo '</div>';
+	}
+	wp_reset_postdata();
+	$out = ob_get_contents();
+	ob_end_clean();
+	return $out;
+}
+
+/**
+ * Find all occurencies of employee in courses and print them.
+ *
+ * @param int $employee_id Employee post ID.
+ */
+function employee_courses( $employee_id ) {
+	ob_start();
+	$args      = array(
+		'post_status'    => 'publish',
+		'posts_per_page' => -1,
+		'post_type'      => 'course',
+		'orderby'        => 'title',
+		'order'          => 'ASC',
+		'meta_query'     => array(
+			array(
+				'key'     => 'crb_employee_course',
+				'value'   => $employee_id,
+				'compare' => 'LIKE',
+			),
+		),
+	);
+	$the_query = new WP_Query( $args );
+	if ( $the_query->have_posts() ) {
+		echo '<h3>' . esc_html__( 'Employee courses', 'msutm-main-theme' ) . ':</h3>';
+		while ( $the_query->have_posts() ) {
+			$the_query->the_post();
+			echo '<p><a href="' . esc_url( get_the_permalink() ) . '">' . esc_html( get_the_title() ) . '</a></p>';
 		}
 	}
 	wp_reset_postdata();

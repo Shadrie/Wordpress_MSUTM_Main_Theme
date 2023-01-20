@@ -49,8 +49,10 @@ add_action( 'after_setup_theme', 'msutm_setup' );
 add_action(
 	'pre_get_posts',
 	function ( $q ) {
-		if ( $q->is_main_query() ) {
-			$q->set( 'posts_per_page', 12 );
+		if ( ! is_admin() ) {
+			if ( $q->is_main_query() ) {
+				$q->set( 'posts_per_page', 12 );
+			}
 		}
 	}
 );

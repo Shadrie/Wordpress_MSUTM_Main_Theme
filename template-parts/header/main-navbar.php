@@ -15,7 +15,7 @@
 <!-- Navbar: begin -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 	<div class="container-fluid">
-		<div class="d-flex w-100 flex-nowrap align-items-center">
+		<div class="logo-block d-flex flex-nowrap align-items-center">
 		<button class="navbar-toggler d-block me-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSiteMap" aria-controls="navbarSiteMap" aria-expanded="false" aria-label="<?php esc_html_e( 'Toggle navigation', 'msutm-main-theme' ); ?>">
 			<span class="navbar-toggler-icon icon-log-in"></span>
 		</button>

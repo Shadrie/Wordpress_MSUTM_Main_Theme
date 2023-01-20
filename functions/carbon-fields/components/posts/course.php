@@ -40,5 +40,14 @@ Container::make( 'post_meta', __( 'Course info', 'msutm-main-theme' ) )
 					Field::make( 'text', 'crb_exam_score', __( 'Exam score', 'msutm-main-theme' ) ),
 				)
 			),
+		Field::make( 'association', 'crb_employee_course', __( 'Teachers', 'msutm-main-theme' ) )
+			->set_types(
+				array(
+					array(
+						'type'      => 'post',
+						'post_type' => 'employee',
+					),
+				)
+			),
 	)
 );
