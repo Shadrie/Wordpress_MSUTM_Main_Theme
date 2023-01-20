@@ -6,7 +6,7 @@ Theme setup and customization does not require programming knowledge and is done
 
 ## Live preview
 
-![theme screenshot](screenshot.png)
+[![theme screenshot](screenshot.png)](https://shadrie.github.io/Static_MSUTM_Main_Theme/)
 Visit [this URL](https://shadrie.github.io/Static_MSUTM_Main_Theme/) to see live preview. 
 
 Attention! AJAX filters will not work on live preview due to static nature of the website.
