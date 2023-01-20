@@ -118,15 +118,18 @@ jQuery(window).on('DOMContentLoaded', function () {
 	-------------------------------------------------------------------------------*/
     
     // General fancybox options.
-	$('[data-fancybox]').fancybox({
+    var general = {
 		hideScrollbar: true,
 		backFocus: false,
 		hash: false,
-	});
+	}
+
+	$('[data-fancybox]').fancybox(general);
 
     // Fancybox options for gallery-student (front page gallery).
     $('[data-fancybox="gallery-student"]').fancybox({
-        'loop': true	
+        ...general,
+        'loop': true,
     });
 
 	/*-------------------------------------------------------------------------------
