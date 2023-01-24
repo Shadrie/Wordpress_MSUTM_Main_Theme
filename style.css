@@ -381,6 +381,11 @@ img {
     height: auto;
 }
 
+.tab-content .article-title,
+.tab-content .article-date {
+    margin: 0 var(--bs-gutter-x, .75rem);
+}
+
 .nav-pills .nav-link {
     border-radius: 0;
     color: var(--light-link-color);

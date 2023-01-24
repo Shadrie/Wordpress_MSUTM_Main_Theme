@@ -11,7 +11,7 @@
  * @link      https://github.com/Shadrie/Wordpress_MSUTM_Main_Theme
  */
 
-$thumbnail = get_the_post_thumbnail_url( '', 'medium' );
+$thumbnail = get_the_post_thumbnail_url( '', 'large' );
 ?>				     
 <div class="article-item">
 	<a href="<?php echo esc_url( get_the_permalink() ); ?>">
@@ -20,5 +20,5 @@ $thumbnail = get_the_post_thumbnail_url( '', 'medium' );
 		<?php } ?>       
 		<div class="article-title"><?php the_title(); ?></div>
 	</a>         
-	<div class="fw-lighter"><?php echo get_the_date( 'j F Y H:i' ); ?></div>
+	<div class="article-date fw-lighter"><?php echo get_the_date( 'j F Y H:i' ); ?></div>
 </div>

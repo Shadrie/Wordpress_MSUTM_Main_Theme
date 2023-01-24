@@ -12,14 +12,15 @@
  */
 
 ?>
-<div class="container-fluid my-5">
 <?php
 // Display featured posts (set on front page) and featured categories (set in theme options) in a tabbed layout.
 $featured_cat = carbon_get_the_post_meta( 'crb_featured_cat' );
 $cat_list     = carbon_get_theme_option( 'crb_category_list' );
 if ( ( isset( $cat_list ) && ( ! empty( $cat_list ) ) ) || ( isset( $featured_cat ) && ( ! empty( $featured_cat ) ) ) ) {
 	?>
-	<h2 class="text-uppercase mb-4"><?php esc_html_e( 'University articles', 'msutm-main-theme' ); ?></h2>
+	<div class="container-fluid mt-5">
+		<h2 class="text-uppercase mb-4"><?php esc_html_e( 'University articles', 'msutm-main-theme' ); ?></h2>
+	</div>
 	<!-- Tab headers: begin -->
 	<ul class="nav nav-pills nav-fill text-uppercase" id="categoryTabs" role="tablist">
 	<?php
@@ -52,13 +53,13 @@ if ( ( isset( $cat_list ) && ( ! empty( $cat_list ) ) ) || ( isset( $featured_ca
 	</ul>
 	<!-- Tab headers: end -->
 	<!-- Tab content: begin -->
-	<div class="tab-content" id="categoryTabsContent">
+	<div class="tab-content mb-5" id="categoryTabsContent">
 	<?php
 	$cat_count = 0;
 	if ( isset( $featured_cat ) && ( ! empty( $featured_cat ) ) ) {
 		++$cat_count;
 		?>
-		<div class="tabs__content tab-pane active" id="featured" role="tabpanel" aria-labelledby="featured-tab">
+		<div class="tab-pane active" id="featured" role="tabpanel" aria-labelledby="featured-tab">
 		<?php
 		// Display featured posts with a carousel template.
 		get_template_part(
@@ -94,5 +95,3 @@ if ( ( isset( $cat_list ) && ( ! empty( $cat_list ) ) ) || ( isset( $featured_ca
 	<!-- Tab content: end -->
 	<?php
 }
-?>
-</div>
